@@ -8,7 +8,7 @@ subtitle:
 description:
 keywords:
 author: Nola 
-language:
+language: zh-Hans
 timezone:
 
 # URL
@@ -80,3 +80,7 @@ theme: next
 deploy:
   type: git
   repo: git@github.com:Nolaaaaa/Nolaaaaa.github.io.git
+  
+duoshuo:
+  enable: true
+  shortname: your-duoshuo-shortname
