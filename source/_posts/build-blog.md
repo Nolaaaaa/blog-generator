@@ -1,10 +1,11 @@
 ---
 title: Build Blog
-date: 2018-06-02 22:35:58
+date: 2018-04-02 22:35:58
 tags: [git,hexo,github]
 ---
 
-因为想拥有一个独属于自己的个人博客啊。<escape><!-- more --></escape>
+因为想拥有一个独属于自己的个人博客啊
+<escape><!-- more --></escape>
 
 ### 1 安装部署hexo
 

@@ -322,7 +322,7 @@ font:
   headings:
     external: true
     family:
-    size: 
+    size: 14px
 
   # Font settings for posts.
   # 文章字体

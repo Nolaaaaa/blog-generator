@@ -1,12 +1,12 @@
 ---
-title: Beautify Blog
-date: 2018-06-05 22:19:17
+title: Blog Beautify
+date: 2018-04-03 22:19:17
 tags: git
 ---
 
-这篇的目的是记录美化博客的过程。
+这篇的目的是记录美化博客的过程
 <escape><!-- more --></escape>
-Ps：`$ hexo generate`和`$ hexo deploy`两句长长的语句可以简写成一句`$ hero d -g`
+Ps：`$ hexo generate`和`$ hexo deploy`两句长长的语句可以简写成一句`$ hexo d -g`
 
 本博客美化的内容有：
 1 改变页面主题并添加动画
