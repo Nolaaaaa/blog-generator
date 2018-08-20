@@ -77,5 +77,5 @@ points
 ```
 <path d="M 20 230 Q 40 205, 50 230 T 90230"/>
 ```
-[path](https://i.loli.net/2018/08/17/5b7677eeeda9f.png)
+![path](https://i.loli.net/2018/08/17/5b7677eeeda9f.png)
 

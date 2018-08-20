@@ -12,7 +12,7 @@ tags: [git,hexo,github]
 1.  进入一个安全的目录，`cd ~/Desktop `
 2.  在 GitHub 上新建一个空 repo，repo 名称是「你的GitHub用户名.github.io」
 3.  安装 Hexo    `$ npm install -g hexo-cli`
-4.   `$ hexo init myBlog`
+4.   `$ hexo init myBlog` 新建一个网站
 5.   `$ cd myBlog`
 6.   `$ npm I`
 7.   `$ hexo new `这时会看到一个 md 文件的路径
@@ -29,8 +29,9 @@ tags: [git,hexo,github]
 ### 2 添加新的博客
 
 1.  `$ hexo new` 添加博客md，这时会出现一个路径，复制显示的路径，打开编辑
-2.  `$ hexo generate`
-3.  `$ hexo deploy` OK完成
+2.  `$ hexo generate`生成静态文件
+3.  `$ hexo deploy` 部署网站
+4.  `hexo clean` 清除缓存文件 (db.json) 和 public 文件夹下已生成的静态文件
 
 ### 3 更换博客的主题
 

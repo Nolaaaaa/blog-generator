@@ -6,7 +6,7 @@ tags: git
 
 这篇的目的是记录美化博客的过程
 <escape><!-- more --></escape>
-Ps：`$ hexo generate`和`$ hexo deploy`两句长长的语句可以简写成一句`$ hexo d -g`
+Ps：`$ hexo generate`和`$ hexo deploy`两句长长的语句可以简写成一句`$ hexo d -g`,使用一个内容为`<!-- more -->`的闭合`escape`标签可以让首页只展示这个标签前面的部分
 
 本博客美化的内容有：
 1 改变页面主题并添加动画
