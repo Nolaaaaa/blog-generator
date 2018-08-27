@@ -188,7 +188,7 @@ store.commit({
 `state.obj = { ...state.obj, newProp: 123 }`
 
 #### Action
-**异步**,但是actions不能对数据，只能用commit调用mutations。参数是store,可以用{commit}，然后commit('mutations中的方法', 参数)
+**异步**,但是actions不能对数据，只能用commit调用mutations。参数是store,可以用{commit}，然后commit('mutations中的方法', 参数)，  `this.$store.dispatch`用于分发action
 
 #### Module
 

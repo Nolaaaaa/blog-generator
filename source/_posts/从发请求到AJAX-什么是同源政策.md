@@ -150,21 +150,16 @@ request.onreadystatechange=function(){ if(request.readyState === 4){
 是为了保证用户信息的安全，防止恶意的网站窃取数据。（因为AJAX可以读取浏览器响应的内容，如果没有同源政策的限制，就可以随便get、post，则互联网即没有隐私可言）　　
 
 4. 同源政策的内容：
+"同源"即"三个相同"，只有 协议+端口+域名 一模一样才允许发 AJAX 请求;如：http://baidu.com 不可以向 http://www.baidu.com 发请求。如http://baidu.com:80 不可以向 http://baidu.com:81 发请求）
 随着互联网的发展，"同源政策"越来越严格。目前，如果非同源，共有三种行为受到限制。
     *   Cookie、LocalStorage 和 IndexDB 无法读取
     *   DOM 无法获得
     *   AJAX 请求不能发送。
 
-"同源"即"三个相同"，只有 协议+端口+域名 一模一样才允许发 AJAX 请求
-    
-    *   如：http://baidu.com 不可以向 http://www.baidu.com 发请求　　
-        
-    *   如http://baidu.com:80 不可以向 http://baidu.com:81 发请求）　　
-
 ### 4 如何规避同源
 
 向另一个协议+端口+域名不一样的网页发起请求
-    *   方法一：用JSONP （不能post）　　
-    *   方法二：用CORS（全称：跨源资源共享 Cross-Origin Resource sharing）
-        *   在后台加一句允许http://xxxx这个网站请求，如：response.setHeader('Access-Control-Allow-Origin','http://xxxx'）
+方法一：用JSONP （不能post）　　
+方法二：用CORS（全称：跨源资源共享 Cross-Origin Resource sharing）在后台加一句允许http://xxxx这个网站请求，如：response.setHeader('Access-Control-Allow-Origin','http://xxxx'）
+方法三：window.postMessage[window.postMessage - Web API 接口 | MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/postMessage)
 
