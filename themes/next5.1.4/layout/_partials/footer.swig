@@ -82,9 +82,4 @@
         }).then(function (object) {
         })
     }
-    $(function () {
-        var Counter = AV.Object.extend("Counter");
-        addCount(Counter);
-        showTime(Counter);
-    });
 </script>
