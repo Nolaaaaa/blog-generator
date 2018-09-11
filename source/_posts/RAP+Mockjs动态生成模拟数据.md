@@ -1,7 +1,8 @@
 ---
 title: RAP + Mock.js动态生成模拟数据
 date: 2018-06-25 20:12:45
-tags:
+tags: [Mock.js,RAP]
+categories: 前端
 ---
 
 ps：补充一下了Mock.js的用法，以RAP不能使用的时候自己通过Mock的方式来处理接口

@@ -1,7 +1,8 @@
 ---
 title: onclick与addEventListener的区别
 date: 2018-06-01 15:25:35
-tags:
+tags: DOM事件
+categories: 前端
 ---
 
 通过onclick与addEventListener及两个实例子深度解析DOM的冒泡及捕获事件

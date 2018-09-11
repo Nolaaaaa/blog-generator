@@ -1,7 +1,8 @@
 ---
 title: JavaScript数据类型介绍
 date: 2018-04-26 16:06:37
-tags:
+tags: [数据类型,JavaScript]
+categories: 前端
 ---
 
 最新的 ECMAScript 标准定义了JS的 7 种数据类型<escape><!-- more --></escape>，其中包括：

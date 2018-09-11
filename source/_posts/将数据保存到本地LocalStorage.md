@@ -1,7 +1,8 @@
 ---
 title: 将数据保存到本地localStorage
 date: 2018-08-05 17:14:22
-tags:
+tags: LocalStorage
+categories: 前端
 ---
 
 localStorage 类似于 [sessionStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window.sessionStorage) 不同的是sessionStorage在页面被关闭时数据存储会被清除，而localStorage 是无期限的

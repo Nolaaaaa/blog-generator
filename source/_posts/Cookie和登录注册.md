@@ -1,7 +1,8 @@
 ---
 title: Cookie和登录注册
 date: 2018-08-19 20:34:10
-tags:
+tags: Cookie
+categories: 前端
 ---
 
 为什么会存在Cookie？因为 [HTTP协议](https://zh.wikipedia.org/wiki/HTTP) 是无状态的，即 [服务器](https://zh.wikipedia.org/wiki/%E6%9C%8D%E5%8A%A1%E5%99%A8) 不知道用户上一次做了什么，这严重阻碍了 [交互式Web应用程序](https://zh.wikipedia.org/wiki/%E4%BA%A4%E4%BA%92%E5%BC%8FWeb%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F) 的实现。

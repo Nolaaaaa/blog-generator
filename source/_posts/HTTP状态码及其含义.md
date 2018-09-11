@@ -1,7 +1,8 @@
 ---
 title: HTTP状态码及其含义
 date: 2018-06-21 15:41:33
-tags:
+tags: HTTP
+categories: 前端
 ---
 
 HTTP一些常见的状态码及其含义

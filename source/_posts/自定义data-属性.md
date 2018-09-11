@@ -1,7 +1,8 @@
 ---
 title: 自定义data-*属性
 date: 2018-08-09 17:19:26
-tags:
+tags: HTML
+categories: 前端
 ---
 
 自定义data-*属性，HTML标签上添加以 “data-“开头的属性即可

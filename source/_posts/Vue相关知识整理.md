@@ -1,7 +1,8 @@
 ---
 title: Vue相关知识整理
 date: 2018-07-18 14:33:55
-tags:
+tags: Vue
+categories: 前端
 ---
 
 整理的在使用vue的过程中遇到的一些零碎的容易忘记的知识点

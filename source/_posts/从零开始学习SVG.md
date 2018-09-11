@@ -1,7 +1,8 @@
 ---
 title: 从零开始学习SVG
 date: 2018-06-01 20:13:50
-tags:
+tags: SVG
+categories: 前端
 ---
 
 SVG是一种用来描述二维矢量图形的标记语言

@@ -1,7 +1,8 @@
 ---
 title: 用命令行在本地创建一个库并上传到Github
 date: 2018-04-4 19:08:02
-tags:
+tags: [SSH,Git]
+categories: 前端
 ---
 
 如何在本地创建一个仓库并上传到github？如何获取一个SSH key？

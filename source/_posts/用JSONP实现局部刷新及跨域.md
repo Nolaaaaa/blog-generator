@@ -1,7 +1,8 @@
 ---
 title: 用JSONP实现局部刷新及跨域
 date: 2018-06-1 22:43:27
-tags:
+tags: JSONP
+categories: 前端
 ---
 
 实现HTML页面局部刷新有哪些方法？什么是JSONP？JSONP怎么实现局部刷新和跨域？

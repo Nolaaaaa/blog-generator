@@ -1,7 +1,8 @@
 ---
 title: CSS垂直水平居中方法汇总
 date: 2018-08-02 16:04:05
-tags:
+tags: CSS
+categories: 前端
 ---
 
 用思维导图整理了CSS垂直水平居中的一些方法

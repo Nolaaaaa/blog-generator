@@ -1,7 +1,8 @@
 ---
 title: 让.bashrc文件在终端自动生效
 date: 2018-04-19 18:09:14
-tags:
+tags: 
+categories: 备忘
 ---
 
 修改了`.bashrc`文件，想在打开终端时默认路径变成桌面路径。

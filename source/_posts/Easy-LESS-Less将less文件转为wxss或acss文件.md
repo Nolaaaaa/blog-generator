@@ -1,7 +1,8 @@
 ---
-title: Easy LESS+Less将less文件转为wxss或acss文件
+title: Easy LESS插件+Less将less文件转为wxss或acss文件
 date: 2018-09-03 21:21:54
-tags:
+tags: less
+categories: 前端
 ---
 
 这几天开始尝试写小程序，因原生css不支持嵌套，写起来结构很不清晰，所以考虑用less预处理来写。less格式转wxss格式是通过vscode的Easy LESS这款插件，通过简单的配置后可以自由转换格式如wxss、acss

@@ -1,7 +1,8 @@
 ---
 title: JavaScript数据类型判断
 date: 2018-04-28 16:22:07
-tags:
+tags: [数据类型,JavaScript]
+categories: 前端
 ---
 
 Typeof()、instanceof运算符、Object.prototype.toString.call()、constructor属性都可以判断数据类型

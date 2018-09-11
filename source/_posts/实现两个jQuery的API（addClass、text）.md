@@ -1,7 +1,8 @@
 ---
 title: 实现两个jQuery的API（addClass、text）
 date: 2018-05-10 15:43:48
-tags:
+tags: [JavaScript,jQuery]
+categories: 前端
 ---
 
 用原生JS实现jQuery的addClass和text两个API

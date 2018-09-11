@@ -1,7 +1,8 @@
 ---
 title: 使用http-server开启一个本地服务器
 date: 2018-05-12 20:09:58
-tags:
+tags: http-server
+categories: 前端
 ---
 
 在写前端页面中，经常会在浏览器运行HTML页面，从本地文件夹中直接打开的一般都是`file`协议，当代码中存在`http`或`https`的链接时，HTML页面就无法正常打开，为了解决这种情况，需要在在本地开启一个本地的服务器

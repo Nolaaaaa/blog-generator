@@ -1,8 +1,8 @@
-
 ---
 title: 利用@keyframe及animation做一个页面Loading时的小动画
 date: 2018-05-08 15:57:39
-tags:
+tags: [CSS,animation]
+categories: 前端
 ---
 
 利用@keyframe规则和animation常用属性做一个页面Loading时的小动画

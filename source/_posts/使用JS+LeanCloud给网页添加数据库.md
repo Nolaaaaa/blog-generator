@@ -1,7 +1,8 @@
 ---
 title:  使用 JS + LeanCloud 给网页添加数据库
 date: 2018-06-17 14:22:21
-tags:
+tags: [JavaScipt,LeanCloud]
+categories: 前端
 ---
 
 记录给自己网页添加留言功能的过程

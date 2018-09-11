@@ -1,7 +1,8 @@
 ---
 title: HTTP的请求及响应
 date: 2018-04-17 16:53:46
-tags:
+tags: HTTP
+categories: 前端
 ---
 
 HTTP是什么？HTTP 请求包括哪些部分？HTTP 响应包括哪些部分？如何使用 curl 命令？

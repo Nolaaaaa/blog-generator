@@ -1,7 +1,8 @@
 ---
 title: JavaScript数据类型转换
 date: 2018-04-27 16:14:59
-tags:
+tags: [数据类型,JavaScript]
+categories: 前端
 ---
 
 任意数据类型转字符串、数字、布尔

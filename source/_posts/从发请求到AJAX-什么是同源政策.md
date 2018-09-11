@@ -1,7 +1,8 @@
 ---
 title: 从发请求到AJAX + 什么是同源政策
 date: 2018-06-2 14:33:48
-tags:
+tags: [AJAX,同源政策]
+categories: 前端
 ---
 
 用form、a、image、link、script等标签都可以发请求，但是各有各的缺陷，这个时候就需要强大的AJAX出场了

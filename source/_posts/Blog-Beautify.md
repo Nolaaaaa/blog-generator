@@ -1,7 +1,8 @@
 ---
-title: Blog Beautify
+title: Hexo--Blog Beautify
 date: 2018-04-03 22:19:17
-tags: git
+tags: Hexo
+categories: Hexo
 ---
 
 这篇的目的是记录美化博客的过程

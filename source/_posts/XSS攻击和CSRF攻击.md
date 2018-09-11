@@ -1,7 +1,8 @@
 ---
 title: XSS攻击和CSRF攻击
 date: 2018-07-20 14:36:42
-tags:
+tags: [XSS,CSRF,前端安全]
+categories: 前端
 ---
 
 整理了XSS攻击和CSRF攻击的攻击原理以及如何预防这类攻击
