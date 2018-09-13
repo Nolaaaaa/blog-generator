@@ -9,7 +9,7 @@ localStorage 类似于 [sessionStorage](https://developer.mozilla.org/en-US/docs
 <escape><!-- more --></escape>
 ### 1  什么是localStorage？
 只读的localStorage 允许你访问一个 [Document](https://developer.mozilla.org/zh-CN/docs/Web/API/Document)  的远端（origin）对象  [Storage](https://developer.mozilla.org/zh-CN/docs/Web/API/Storage) 
-```
+```javascript
 //增加数据
 localStorage.setItem(``);
 //读取数据
@@ -21,15 +21,15 @@ localStorage.clear();
 ```
 
 ### 2  将数据保存到本地localStorage中
-```
-    // 页面刷新后依然在本地保留数据
-    window.onbeforeunload = ()=>{       //页面刷新时调用
-      let dataString = JSON.stringify(this.todoList)   //将todoList对象转化为JSON字符串 dataString
-      window.localStorage.setItem('myTodos', dataString) //通过window.localStorage添加dataString数据到"myTodos"中
-    }
-    let oldDataString = window.localStorage.getItem('myTodos')  //通过window.localStorage读取"myTodos"中的数据
-    let oldData = JSON.parse(oldDataString)  //将读取到的JSON字符串解析JSON字符串
-    this.todoList = oldData || []    //把数据赋值给todoList对象
+```javascript
+// 页面刷新后依然在本地保留数据
+window.onbeforeunload = ()=>{       //页面刷新时调用
+  let dataString = JSON.stringify(this.todoList)   //将todoList对象转化为JSON字符串 dataString
+  window.localStorage.setItem('myTodos', dataString) //通过window.localStorage添加dataString数据到"myTodos"中
+}
+let oldDataString = window.localStorage.getItem('myTodos')  //通过window.localStorage读取"myTodos"中的数据
+let oldData = JSON.parse(oldDataString)  //将读取到的JSON字符串解析JSON字符串
+this.todoList = oldData || []    //把数据赋值给todoList对象
 ```
 但是，`beforeunload` 事件里面的所有请求都发不出去，会被浏览器取消。
 所以，`beforeunload`事件里不能将数据存到 LeanCloud的。

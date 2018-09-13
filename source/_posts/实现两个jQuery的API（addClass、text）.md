@@ -9,13 +9,13 @@ categories: 前端
 <escape><!-- more --></escape>
 ### 目的
 1. Quick Start给所有的div添加一个叫“red”的class，为方便看到代码的效果，设置如下css，在设置“red”成功时，文本会变红
-```
+```css
 .red{
   color:red;
 }
 ```
 2. 将所有的div中的textContent变为“Hi”，HTML代码如下：
-```
+```html
 <body>
   <div class="item1">选项1</div>
   <div class="item2">选项2</div>

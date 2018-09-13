@@ -14,26 +14,26 @@ categories: 前端
 ### 1  Boolean
 1. Bealean类型的值有两个：true、false
 2. 所有其他数据类型都有对应的Boolean值，使用Boolean(value)方法可以强制转换任意值为boolean类型
-```
+```javascript
 console.log(Boolean("Hello")); //true
 ```
 
 ### 2  Null
 1. Null类型的值只有一个：null
 2. Typeof(null)时返回“object”：这是历史原因造成的，但是可以理解成：unll表示一个空对象(Object)的引用
-```
+```javascript
 typeof(null); // “object”
 ```
 
 ### 3  Undefined
 1. undefined类型的值只有一个：undefined
 2. 只进行了声明而未初始化的变量，其值都是
-```
+```javascript
 undefined var m;
 console.log(m);    //undefined
 ```
 3. undefined值派生自null值，两者都是表示“没有值”。两者相等，但是由于数据类型不一样，两者不全等（==是相等操作符会对数据类型进行转化，===是全等操作符不会转化数据类型）
-```
+```javascript
 console.log(undefined == null); //true 
 console.log(undefined === null); //false
 ```
@@ -42,12 +42,12 @@ console.log(undefined === null); //false
 ### 4  Number
 1. Number包括：整数和小数(如:1/1.1)、科学计数法(如:1.11e2)、二进制(如:0b11)、八进制(如:011或0o11)、十六进制(如:0x11)
 2. 保存浮点数所需的内存空间是整数值的2倍
-```
+```javascript
 * 浮点数值相加结果会不准确 console.log(0.1+0.2);    //0.30000000000000004
 ```
 
 3. NaN是一个特殊的Number值；它的存在是为了避免程序直接报错；NaN的任何操作都会返回NaN；NaN与任何值都不相等，包括它自身 
-```
+```javascript
 console.log(NaN === NaN);  //false；
 ```
 
@@ -55,7 +55,7 @@ console.log(NaN === NaN);  //false；
 1. 字符串String类型是由引号括起来的一组由16位Unicode字符组成的字符序列。
 2. 用单引号（’ ‘）或双引号（” “）皆可，但是必须双引号配双引号，单引号配单引号
 3. 任何字符串的长度都是可以通过length属性来取得 var a=“nihao”;
-```
+```javascript
 console.log(a.length);
 //5
 ```
@@ -73,7 +73,7 @@ console.log(a.length);
 
 ### 7  Object
 1. 对象由 { } 分隔，在 { } 内部，对象的属性以名称和值对的形式 (name : value) 来定义，属性由逗号分隔　
-```
+```javascript
 var cars={
 "car1" : "Volvo",
 "car2": "Saab",
@@ -85,7 +85,7 @@ car2: "Saab",
 }; 
 ```
 2. 寻找对象中的值有两种方式： 
-```
+```javascript
 car1name=cars.car1;
 car1name =cars["car1"];
 ```

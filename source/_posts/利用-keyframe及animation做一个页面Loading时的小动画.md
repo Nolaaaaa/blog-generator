@@ -12,7 +12,7 @@ categories: 前端
 要使用关键帧, 先创建一个带名称的@keyframes规则，以便后续使用 animation-name 这个属性来调用指定的@keyframes. 每个@keyframes 规则包含多个关键帧，也就是一段样式块语句，每个关键帧有一个百分比值作为名称，代表在动画进行中，在哪个阶段触发这个帧所包含的样式。
 关键帧的编写顺序没有要求，最后只会根据百分比按由小到大的顺序触发。
 2. 语法
-```
+```css
 @keyframes <identifier> {
   [ [ from | to | <百分比> ] [, from | to | <百分比> ]* block ]*
 }

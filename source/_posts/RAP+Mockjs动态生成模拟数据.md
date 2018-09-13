@@ -12,13 +12,13 @@ ps：补充一下了Mock.js的用法，以RAP不能使用的时候自己通过Mo
 2.  `npm init --yes`安装一个默认的`package.json`
 3.  在安装一个要打包到生产环境的安装包时，你应该使用`npm install —save`，如果你在安装一个用于开发环境的安装包（例如，linter, 测试库等），你应该使用`npm install —save-dev`。
 4.  如使用如下代码，则会自动在文档中添加一个`dependencies`模块（这些包在生产中需要）
-```
+```javascript
 $ npm install mockjs -S
 或者
 $ npm install mockjs --save 
 ```
 5.  如使用如下代码，则会自动在文档中添加一个`devDependencies`模块（这些包用于开发和测试）
-```
+```javascript
 //安装到你项目的目录
 $ npm install webpack -D
 //全局安装  不建议用
@@ -36,7 +36,7 @@ API管理工具可以帮助我们管理这些接口，现在常用 API 管理工
 ### 3 Mock.js
 1.  Mock.js 用于生成随机数据，拦截 Ajax 请求。[Mock.js示例](http://mockjs.com/examples.html)
 2.  当RAP的接口不能使用的时候要怎么处理？
-```
+```javascript
 //下载Mock，并在页面引入Mock
 import Mock from mock.js
 let Random = Mock.Random

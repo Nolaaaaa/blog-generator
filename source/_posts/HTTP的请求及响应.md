@@ -56,12 +56,12 @@ HTTP响应同样包括四部分，主要格式如下：
 
 1. 什么是`curl`：`curl`是Linux下一个很强大的http命令行工具。
 2. curl的基本用途：创造一个请求，并得到响应：
-```
+```javascript
 curl -s -v -H "Nola: xxx" \-\- "https://www.baidu.com" 请求内容：
 GET / HTTP/1.1 Host: www.baidu.com
 User-Agent: curl/7.54.0 Accept: */* Nola: xxx
 ```
-```
+```javascript
 curl -X POST -s -v -H "Nola: xxx" -- "https://www.baidu.com"
 请求内容：
 POST / HTTP/1.1
@@ -69,7 +69,7 @@ Host: www.baidu.com
 User-Agent: curl/7.54.0
 Accept: */* Nola: xxx
 ```  
-```
+```javascript
 curl -X POST -d "1234567890" -s -v -H "Nola: xxx" \-\- "https://www.baidu.com" 
 请求内容：
 POST / HTTP/1.1 Host: www.baidu.com

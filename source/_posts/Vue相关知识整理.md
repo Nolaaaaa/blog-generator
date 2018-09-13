@@ -23,7 +23,7 @@ categories: 前端
 ### 3  父子通信
 组件关系可分为父子组件通信、兄弟组件通信（new Vue() 作为 eventBus）、跨级组件通信。
 父子组件通信的方法为：子组件通过props方法接受父组件的data数据，子组件通过 $emit 触发父组件的自定义事件，举例如
-```
+```javascript
 //父组件将数据（currentUser）和方法（logout）传递出去
 <template>
         <Todo v-else @logout="logout" :currentUser="currentUser"/>
@@ -66,7 +66,7 @@ on和emit的事件必须是在一个公共的实例上，才能触发
 可以用混合器，例如（）
 可以嵌套
 **Vue.cli中安装使用：**
-```
+```javascript
 //安装
 npm i -D sass-loader
 npm i -D node-sass
@@ -80,7 +80,7 @@ MVVM主要解决了MVC中大量的DOM 操作使页面渲染性能降低，加载
 
 ### 8  一些报错及解决方法
 1. Vue空格等报错解决方法
-```
+```javascript
 //注释掉webpack.base.config.js文件中的如下代码
 const createLintingRule = () => ({
   /*test: /\.(js|vue)$/,
@@ -102,9 +102,12 @@ const createLintingRule = () => ({
 2. 单vue组件，template必需且只能有一个根结点
 3. 监听一个vue组件的input时加.native`@keyup.enter.native="addTodo"`
 4. 使文本框自动获取焦点的方法：
-```
+```html
 //html文件
 <input ref="input">
+```
+
+```javascript
 //js文件
 new Vue({
   ...
@@ -124,7 +127,7 @@ new Vue({
 Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式，它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化，并没有任何永久存储的功能。每一个 Vuex 应用的核心就是 store（仓库）。“store”基本上就是一个容器，它包含着你的应用中大部分的状态 (state)。
 ### 1  如何在 Vue 组件中展示状态？
 一个store实例：
-```
+```javascript
 import Vue from "vue"
 import Vuex from "vuex"
 Vue.use(Vuex)
@@ -136,7 +139,7 @@ const store = new Vuex.Store({
 })
 ```
 在Vue的实例中，把 store 对象提供给 “store” 选项`即store:store`，这可以把 store 的实例注入所有的子组件，子组件能通过`this.$store`访问到，如：
-```
+```javascript
 const app = new Vue({
   el: '#app',
   store,
@@ -155,7 +158,7 @@ vuex一共有5种属性，分别是State、 Getter、Mutation 、Action、 Modul
 #### Getter
 1. Getters 可以对State进行计算操作，相当于**VUE中的computed**，getters 可以在多组件之间复用，如果一个状态只在一个组件内使用，是可以不用getters
 2. 可以通过属性访问，如
-```
+```javascript
 computed: {
   doneTodosCount () {
     return this.$store.getters.doneTodosCount
@@ -168,7 +171,7 @@ computed: {
 #### Mutation
 1. **同步**，**相当于VUE中的methods**，但是只能是同步。每个 mutation 都有一个字符串的 **事件类型 (type)** 和 一个 **回调函数 (handler)**。它的回调函数(handler)接受state作为第一个参数，如`handler(state,其他参数){}`
 2. 不能直接调用一个 mutation handler,需要以相应的 type 调用 **store.commit** 方法，如：
-```
+```javascript
 mutations: {
   increment (state, n) {
     state.count += n
@@ -178,7 +181,7 @@ mutations: {
 store.commit('increment'，额外的参数即载荷payload)
 ```
 3. 对象风格的提交方式，即直接使用包含 type 属性的对象
-```
+```javascript
 store.commit({
   type: 'increment',
   amount: 10
@@ -194,7 +197,7 @@ store.commit({
 #### Module
 
 #### 在其他地方用引入
-```
+```javascript
 //在其他地方用引入
 import {mapState,mapGetters,mapMuations, mapAtions} from 'vuex'
 export default {
@@ -212,7 +215,7 @@ export default {
 ### 3  热重载Hot Reload
 把getters统一为数据的获取出口，actions统一为数据的操作入口
 热重载：主要在开发环境中使用；当模块内容修改时，保留Vuex数据，重载修改模块的业务逻辑；如果不用热重载，修改模块时整体刷新，数据不再保留
-```
+```javascript
 //Vuex 支持在开发过程中热重载 mutation、module、action 和 getter、
 //对于 mutation 和模块，需要使用 store.hotUpdate() 方法
 import Vue from 'vue'
@@ -261,7 +264,7 @@ if (module.hot) {
 表示全局路由器对象，项目中通过router路由参数注入路由之后，在任何一个页面都可以通过此方法获取到路由器对象，并调用其`push()`, `go()`等方法；
 #### this.$route:
 表示当前正在用于跳转的路由器对象，可以调用其name、path、query、params等方法；
-```
+```javascript
 //两条路由
 const routes = [
   { path: '/home', component: Home },

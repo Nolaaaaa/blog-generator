@@ -7,7 +7,7 @@ categories: 前端
 
 当页面最上部有顶部菜单是，使用锚点跳转的方法很容易挡住想要呈现的内容<escape><!-- more --></escape>（如字被挡了一半），为避免出现这样的问题，故滚动到指定元素使用用JS的方法来实现
 ### 1  初版（第一版）
-```
+```javascript
 //1 获取所有的a标签
 let aTags=document.querySelectorAll("nav.menu ul li a") 
     //console.log(aTags)
@@ -31,7 +31,7 @@ for(let i=0;i<=aTags.length;i++){
 
 ### 2  优化（第二版）
 
-```
+```javascript
 //1 获取所有的a标签
 let aTags=document.querySelectorAll("nav.menu ul li a") 
 //console.log(aTags)
@@ -64,7 +64,7 @@ for(let i=0;i<=aTags.length;i++){
 优化后有跳转动画，但是依然还有缺点，比如：定义的是时间一致，所以跳转到距离TOP不同位置的地方速度不一致。看起来依然生硬不自然
 
 ### 3  继续优化（第三版 引入tween.js库）
-```
+```javascript
 //1 引入tween.js库
 <script src='https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.2.0/Tween.min.js'></script>  
 <script> 

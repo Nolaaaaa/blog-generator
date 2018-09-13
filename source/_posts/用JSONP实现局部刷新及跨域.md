@@ -25,7 +25,7 @@ callbackName -> callback
 yyy -> 随机数 frank12312312312321325()
 
 ### 3  用JSONP实现局部刷新
-```
+```javascript
 button.addEventListener('click', (e)=>{
     let script = document.createElement('script')
     let functionName = 'dsfnd'+ parseInt(Math.random()*10000000 ,10)
@@ -44,7 +44,7 @@ button.addEventListener('click', (e)=>{
     }
 })
 ```
-```
+```javascript
 //后端代码
 ...
 if (path === '/pay'){

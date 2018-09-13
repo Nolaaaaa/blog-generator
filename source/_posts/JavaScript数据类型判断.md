@@ -9,7 +9,7 @@ Typeof()、instanceof运算符、Object.prototype.toString.call()、constructor�
 <escape><!-- more --></escape>
 ### 1  Typeof()
 判断基本数据类型（基本类型number、string、boolean、undefined，除了null。）⚠️不能区分对象、数组、null、引用类型
-```
+```javascript
 //typeof()输出有五种数据类型  number   string    boolean   undefined   object以及以及函数类型 function
 
 typeof("")  //"string"
@@ -26,7 +26,7 @@ typeof(null)  //"object"                  null返回对象
 
 ### 2  instanceof运算符
 判断引用类型（引用类型，即对象类型。创建对象后可以调用这个对象下的方法有Object类型、Array类型、Date类型、RegExp类型、Function类型，包装类型（Boolean、Number、String）等。）
-```
+```javascript
 //nstanceof对引用类型进行判断
 {} instanceof Object;     //true[] instanceof Array;       //truenew Date() instanceof Date;        //true
 function(){} instanceof Function;   //true
@@ -37,7 +37,7 @@ function(){} instanceof Function;   //true
 
 ### 3  Object.prototype.toString.call()
 能准确的判断基本类型和引用类型
-```
+```javascript
 Object.prototype.toString.call('abc')     //"[object String]"
 Object.prototype.toString.call(123)       //"[object Number]"
 Object.prototype.toString.call(true)      //"[object Boolean]"
@@ -51,7 +51,7 @@ Object.prototype.toString.call(function(){}) //"[object Function]"
 
 ### 4  constructor属性
 Constructor属性始终指向创建当前对象的构造函数
-```
+```javascript
 string".constructor == String   //true
 true.constructor == Boolean   //true
 (123).constructor == Number   //true
@@ -59,7 +59,7 @@ true.constructor == Boolean   //true
 [].constructor == Array   //true
 ```
 一个常用的函数
-```
+```javascript
 function isArray(arr){
     return typeof arr == “object” && arr.constructor == Array;
 }

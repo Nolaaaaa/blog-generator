@@ -35,7 +35,7 @@ Model和服务器交互，Model 将得到的数据交给 Controller，Controller
 MVC是XeroxPARC在八十年代为编程语言Smalltalk发明的一种软件设计模式，至今已被广泛使用。
 
 4. VC 第一版
-```
+```javascript
 !function(){ 
     var view = document.querySelector(‘xxx')
     var controller = function(view){
@@ -45,7 +45,7 @@ MVC是XeroxPARC在八十年代为编程语言Smalltalk发明的一种软件设�
 ```
 
 5. VC 第二版，添加`init`
-```
+```javascript
 !function(){
   var view = document.querySelector('xxx')
  	var controller = {
@@ -62,7 +62,7 @@ MVC是XeroxPARC在八十年代为编程语言Smalltalk发明的一种软件设�
 ```
 
 6. MVC思想完整版
-```
+```javascript
 !function(){
 	  //M 模型--用于数据储存，负责和server数据交互
     var model = {

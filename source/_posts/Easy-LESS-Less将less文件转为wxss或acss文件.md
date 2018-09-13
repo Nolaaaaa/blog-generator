@@ -15,11 +15,10 @@ categories: 前端
 建一个文件夹`.vscode`
 `.vscode`文件夹下建一个叫`settings.json`的文件
 `settings.json`中配置内容如下：
-```
+```json
 { 
     "less.compile": {
       "outExt": ".wxss"
-      //如果是支付宝小程序，同理，格式写成.acss即可
     }
 }
 ```

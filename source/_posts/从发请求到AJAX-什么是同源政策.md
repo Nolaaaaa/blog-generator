@@ -10,16 +10,14 @@ categories: 前端
 ### 1  发请求的各种方法
 
 1. 使用form标签（会在当前页面刷新或者新开一个页面刷新）
-```
-    <form action="" method=post/get>
-    
-        <input type="submit">
-    
-    </form>
+```html
+<form action="" method=post/get>
+    <input type="submit">
+</form>
 ```
     
 2. 使用a标签（会在当前页面刷新或者新开一个页面刷新）
-```
+```html
     <a id=x href="">click</a>
     //让浏览器帮你自动点击
     <script>x.click</script>
@@ -27,21 +25,23 @@ categories: 前端
     
 3. 使用image标签（只能以图片的形式展示）
 4. 使用link标签（只能以 CSS、favicon 的形式展示）
-```
-    <script>
-        var link = document.createElement('link')
-        link.rel = 'stylesheet' link.href = ' '
-        //必须要放到head中
-     document.head.appendChild(link) </script>
+```html
+<script>
+    var link = document.createElement('link')
+    link.rel = 'stylesheet' link.href = ' '
+    //必须要放到head中
+    document.head.appendChild(link) 
+</script>
 ```
     
 5. 使用script标签（只能以脚本的形式运行）
-```
-    <script>
-        var script = document.createElement('script')
-        script.src = ' '
-        //必须要放到head或者body中
-     document.head.appendChild(script) </script>
+```html
+<script>
+    var script = document.createElement('script')
+    script.src = ' '
+    //必须要放到head或者body中
+    document.head.appendChild(script) 
+</script>
 ```
     
 6. 等其他几种
@@ -92,51 +92,51 @@ categories: 前端
 ```
     
 5. 用AJAX设置请求的四个部分
-```
-    let request = new XMLHttpRequest() //第一部分：open('请求的方式'，'请求协议&Host')
-    request.open('GET','/xxx') //想怎么请求就怎么请求
-    
-    //第二部分：request.setRequestHeader('设置的类型','设置的内容')
-    request.setRequestHeader('Content-Type','x-www-form-urlencoded') //第三部分是空格不用设置
-    
-    //第四部分：request.send('第四部分内容')
-    request.send('第四部分')
-    
-    request.onreadystatechange=function(){}
+```javascript
+let request = new XMLHttpRequest() //第一部分：open('请求的方式'，'请求协议&Host')
+request.open('GET','/xxx') //想怎么请求就怎么请求
+
+//第二部分：request.setRequestHeader('设置的类型','设置的内容')
+request.setRequestHeader('Content-Type','x-www-form-urlencoded') //第三部分是空格不用设置
+
+//第四部分：request.send('第四部分内容')
+request.send('第四部分')
+
+request.onreadystatechange=function(){}
 ```
     
 5. 用AJAX获取响应的四个部分
-```
+```javascript
 request.onreadystatechange=function(){ if(request.readyState === 4){
-                console.log('请求响应完毕了') //响应的第一部分获取
-                console.log(request.status)  //200
-                console.log(request.statusText)  //OK
-    
-                if(request.status >= 200 && request.status < 300){ console.log('说明请求成功')
-    
-                    //所有响应的Header获取
-     console.log(request.getAllResponseHeaders()) //响应的第二部分获取
-                    console.log(request.getResponseHeader(Content-Type)) //响应的第三部分是空格
-    
-                    //响应的第四部分获取
-     console.log(request.responseText)
-        
-                }
+    console.log('请求响应完毕了') //响应的第一部分获取
+    console.log(request.status)  //200
+    console.log(request.statusText)  //OK
+
+    if(request.status >= 200 && request.status < 300){ console.log('说明请求成功')
+
+        //所有响应的Header获取
+        console.log(request.getAllResponseHeaders()) //响应的第二部分获取
+        console.log(request.getResponseHeader(Content-Type)) //响应的第三部分是空格
+
+        //响应的第四部分获取
+        console.log(request.responseText)
+
     }
+}
 ```
     
 6. 响应的四个部分是在服务器的node.js里设置的
     
-```
-    //如下为server.js中的代码 //path==='你的路径'
-    if(path === '/'){ //根据路径造一个字符串
-      let string = fs.readFileSync('./index.html', 'utf8') //设置响应的第一部分。statusCode，200/400
-      response.statusCode = 200
-      //设置响应的第二部分
-      response.setHeader('Content-Type', 'text/html;charset=utf-8') //设置响应的第四部分
-     response.write(string) //然后结束
-     response.end()
-    }
+```javascript
+//如下为server.js中的代码 //path==='你的路径'
+if(path === '/'){ //根据路径造一个字符串
+    let string = fs.readFileSync('./index.html', 'utf8') //设置响应的第一部分。statusCode，200/400
+    response.statusCode = 200
+    //设置响应的第二部分
+    response.setHeader('Content-Type', 'text/html;charset=utf-8') //设置响应的第四部分
+    response.write(string) //然后结束
+    response.end()
+}
 ```
     
 

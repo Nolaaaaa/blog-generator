@@ -19,7 +19,7 @@ categories: 前端
 
 ### 3 开启 `http-server`服务
 终端进入目标文件夹，然后在终端输入：
-```
+```javascript
 $ http-server -c-1   （⚠️只输入http-server的话，更新了代码后，页面不会同步更新）
 Starting up http-server, serving ./
 Available on:

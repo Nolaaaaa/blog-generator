@@ -27,7 +27,7 @@ Ps：`$ hexo generate`和`$ hexo deploy`两句长长的语句可以简写成一�
   * Gemini - 左侧网站信息及目录，块+片段结构布局 
 
 2. 添加背景动画，可在主题配置文件`_config.yml`中搜索`canvas_nest`，然后在想要的动画后把false改成true
-```
+```javascript
 canvas_nest: false
 three_waves: false
 canvas_lines: true
@@ -40,7 +40,7 @@ canvas_sphere: false
 
 ### 3 给博客添加icon
 1. 找到想要的图，把图片放在`/themes/(主题名)/source/images`路径中，并在主题配置文件`_config.yml`中搜`favicon `
-```
+```javascript
 favicon:
   small: /images/icon.png
   medium: /images/icon.png
@@ -61,7 +61,7 @@ theme:
 
 ### 6 给文章添加分享功能
 1. 在主题配置文件`_config.yml`中搜索`share`
-```
+```javascript
 needmoreshare2:
   enable: true
   postbottom:
@@ -76,7 +76,7 @@ needmoreshare2:
 ### 7 给博客添加评论功能
 1. `进入leanCloud网站`——`注册`（校验邮箱）——`创建应用`（不用选什么直接点创建，当然有钱也可以点商用的，随便花，反正我没钱）
 2. `设置`——`应用key`——复制`App ID & App Key`放到主题配置文件`_config.yml`中(搜索`valine`)（并设置`enable`为`true`）
-```
+```javascript
 valine:
   enable: true
   appid:     
@@ -88,7 +88,7 @@ valine:
 		
 ### 8 给博客添加阅读量
 1. 和添加评论功能使用同一个网站，在主题配置文件中的设置不同，主题配置文件`_config.yml`中搜索`leancloud_visitors`
-```
+```javascript
 leancloud_visitors:
   enable: ture
   app_id: 

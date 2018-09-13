@@ -18,7 +18,7 @@ onclick与addEventListener实际上可分为：Inline events与Event Listeners
 两者相同点：都是时间监听器。
 两者不同点：
 * addEventListener：很多浏览器支持addEventListener(IE9、IE10、IE11、chrome、firefox、opera、safari支持)，使用方式如下：
-```
+```javascript
 //addEventListener接受三个参数，最后一个参数默认是false。（false表示事件处理将在冒泡阶段执行，true表示事件处理将在捕获阶段执行）
 //addEventListener(type,listener,options) 
 var target = document.getElementById("test");
@@ -27,7 +27,7 @@ target.addEventListener('click',function test(){
 },false)
 ```
 * attachEvent：IE中提供的类似addEventListener的事件监听器，使用方式如下：
-```
+```javascript
 //qqq
 var target = document.getElementById("test");
 target.attachEvent('onclick',test);
@@ -36,7 +36,7 @@ function test(){
 }		
 ```
 * 理论上，Event Listeners (addEventListener and IE’s attachEvent)可以无限增加事件监听给某个一元素。实际应用的约束就是客户端内存的限制，这一点因每个浏览器而异
-```
+```javascript
 var target = document.getElementById("test");
 target.addEventListener('click',function test(){
         console.log("Hi");
@@ -50,11 +50,11 @@ target.addEventListener('click',function test(){
 #### Inline events (“HTML onclick=“” property” and “element.onclick”)
 使用方式：
 * onclick=“”　
-```
+```html
 <a id="test" href="#" onclick="function()">clickMe</a>
 ```
 * element.onclick
-```
+```javascript
 <a id="test" href="#">clickMe</a>
  
 var target = document.getElementById('test')
@@ -63,7 +63,7 @@ target.onclick = function(){
 }
 ```
 * Inline events只能添加一个事件，如果同时有多个，只会输出最后一个的结果
-```
+```javascript
 var target = document.getElementById('tttt')
 target.onclick = function(){
     console.log('Hi');

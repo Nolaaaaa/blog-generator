@@ -36,7 +36,7 @@ categories: 前端
 
 ### 2  在HTML中添加留言板
 1. 用HTML在页面布置留言板
-```
+```javascript
 <section class="message">
     <h2>留言</h2>
     <form id="postMessage" class="postMessage" >
@@ -56,7 +56,7 @@ categories: 前端
 ![avatar](https://i.loli.net/2018/06/15/5b22953cdb8ae.png)
 
 3. 采用MVC思想写的完整代码如下：		
-```
+```javascript
 !function(){
     var model = {
       //只出现和数据相关的操作
