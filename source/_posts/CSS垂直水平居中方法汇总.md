@@ -35,3 +35,4 @@ categories: 前端
 2. 给父元素设置 `position:relative`，子元素设置  `position: absolute; top: 50%; left: 50%`，最后使用负向 margin 实现水平和垂直居中。
 	* 如果宽高固定：margin 的值为宽高（具体的宽高需要根据实际情况计算 padding）的一半的负数
 	* 如果宽高不固定：`transform: translate(-50%, -50%);`
+

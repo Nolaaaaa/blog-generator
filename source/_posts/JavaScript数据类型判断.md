@@ -28,11 +28,14 @@ typeof(null)  //"object"                  null返回对象
 判断引用类型（引用类型，即对象类型。创建对象后可以调用这个对象下的方法有Object类型、Array类型、Date类型、RegExp类型、Function类型，包装类型（Boolean、Number、String）等。）
 ```javascript
 //nstanceof对引用类型进行判断
-{} instanceof Object;     //true[] instanceof Array;       //truenew Date() instanceof Date;        //true
+{} instanceof Object;     //true
+[] instanceof Array;       //true
+new Date() instanceof Date;        //true
 function(){} instanceof Function;   //true
 
 //instanceof无法对原始类型进行判断
-"string" instanceof String;       //false(111) instanceof Number;   //false
+"string" instanceof String;       //false
+(111) instanceof Number;   //false
 ```
 
 ### 3  Object.prototype.toString.call()
@@ -52,7 +55,7 @@ Object.prototype.toString.call(function(){}) //"[object Function]"
 ### 4  constructor属性
 Constructor属性始终指向创建当前对象的构造函数
 ```javascript
-string".constructor == String   //true
+"string".constructor == String   //true
 true.constructor == Boolean   //true
 (123).constructor == Number   //true
 {}.constructor == Object   //true
