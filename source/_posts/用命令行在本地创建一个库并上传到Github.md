@@ -28,6 +28,7 @@ A  index.html
 ps：
 如果add错想撤销add的内容，可使用"git reset HEAD 文件名"；
 如果add错又commit了,可使用"reset --hard HEAD^"；
+
 ### 2  如何获取一个SSH key
 1.  为什么要获取SSH key？—因为利用SSH key可以访问你的所有的仓库。
 2. 一台电脑需要几个SSH key？—每台电脑只需要一个。
@@ -50,3 +51,15 @@ ps：
 	* 在”ssh -T git@github.com”时，遇到如左括号里的代码，一般情况下，输入”ping github.com”即可解决。(错误提示：ssh: Could not resolve hostname [github.com](http://github.com): nodename nor servname provided, or not known） 
 	
 	* 输入”git remote add origin git@github.com:Nolaaaaa/yyy.git”时遇到如左括号里的代码，输入”git remote rm origin”后再重新按步骤输”git remote add origin git@github.com:Nolaaaaa/yyy.git””git push -u origin master”即可。（错误提示：fatal: remote origin already exists.）
+
+
+### 3  远程仓库名称改变后修改本地的对应仓库名
+
+```javascript
+$ git remote -v    //列出远程仓库信息
+//方法一
+$ git remote set-url origin git@github.com:username/reponame.git  //修改远程仓库对应网址
+//方法二
+$ git remote rm origin    //本地仓库删除远程仓库
+$ git remote add origin git@github.com:username/reponame.git   //添加新的远程仓库
+```

@@ -42,4 +42,21 @@ CSS水平布局各栏高度自动相等
   background: rgb(248, 204, 204);
   width: 80%;
 }
+
 ```
+### 2 grid 实现
+[效果预览](http://js.jirengu.com/yucatezexo/22/edit)
+```css
+.container {
+  display: grid; 
+  grid-template-columns: 20% 80%; 
+  grid-template-rows: auto; 
+}
+.left {
+  background: rgb(268, 222, 248);
+}
+.right {
+  background: rgb(248, 204, 204);
+}
+```
+PS: 一个关于grid的练习 shttp://js.jirengu.com/zisinokipu/8/edit
