@@ -16,13 +16,11 @@ String([1,2,3])
 String(['1', '2', '3'])
 // "1,2,3"
 ```
-
-#### arr.toString()
+#### toString()
 ```JavaScript
 [1,2,3].toString()
 // "1,2,3"
 ```
-
 #### join()
 ```JavaScript
 [1,2,3].join(",")
@@ -51,29 +49,27 @@ String(['1', '2', '3'])
 "1, 2, 3".replace(/\s+/g,"").split(",")
 //  ["1", "2", "3"] 
 ```
-
 #### Array from()
 ```JavaScript
 Array.from('foo')
 // ["f", "o", "o"]
 
-// 可将arguments 的值提出来
+// 将arguments 的值提出来。即，将类数组转为真数组。
 function f() {
   return Array.from(arguments);
 }
 f(1, 2, 3);
 // [1, 2, 3]
 ```
-
-**ps  去空格的正则方法**
+#### match()
 ```JavaScript
-// 去除两头空格  
-str.replacvar e(/ = str^\s+|\s+$/g
-// 去除左空格
-str.replace(var str =  /^\s*/, "")
-// 去除右空格
-str''eplace(/(\svar str = *$)/g, "")
-字符串数组转换成数字''
+'hello'.match(/l/g)
+// ["l", "l"]
+```
+#### slice()
+```JavaScript
+Array.prototype.slice.call('hello', 0,2)
+//  ["h", "e"]
 ```
 
 
@@ -84,7 +80,6 @@ str''eplace(/(\svar str = *$)/g, "")
 JSON.parse('['+ String(['1','2','3']) + ']')
 // [1, 2, 3]
 ```
-
 #### strArray.map(Number)
 ```JavaScript
 ['1','2','3'].map(Number)

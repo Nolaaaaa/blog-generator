@@ -23,7 +23,7 @@ categories: 前端
 ### 3  父子通信
 组件关系可分为父子组件通信、兄弟组件通信（new Vue() 作为 eventBus）、跨级组件通信。
 父子组件通信的方法为：子组件通过props方法接受父组件的data数据，子组件通过 $emit 触发父组件的自定义事件，举例如
-```javascript
+```java
 //父组件将数据（currentUser）和方法（logout）传递出去
 <template>
         <Todo v-else @logout="logout" :currentUser="currentUser"/>
@@ -32,9 +32,9 @@ categories: 前端
 //子组件接收数据和方法
 props : ['currentUser'],
 methods: {
-        logout() {   //注册 _user
-              this.$emit("logout")
-        }
+  logout() {   //注册 _user
+    this.$emit("logout")
+  }
 }
 ```
 on和emit的事件必须是在一个公共的实例上，才能触发
@@ -102,13 +102,11 @@ const createLintingRule = () => ({
 2. 单vue组件，template必需且只能有一个根结点
 3. 监听一个vue组件的input时加.native`@keyup.enter.native="addTodo"`
 4. 使文本框自动获取焦点的方法：
-```html
-//html文件
+```java
+// html文件
 <input ref="input">
-```
 
-```javascript
-//js文件
+// js文件
 new Vue({
   ...
   mounted() {
@@ -132,10 +130,10 @@ import Vue from "vue"
 import Vuex from "vuex"
 Vue.use(Vuex)
 const store = new Vuex.Store({
-    state，   
-    getters，    
-    mutations， 
-    actions， 
+  state，   
+  getters，    
+  mutations， 
+  actions， 
 })
 ```
 在Vue的实例中，把 store 对象提供给 “store” 选项`即store:store`，这可以把 store 的实例注入所有的子组件，子组件能通过`this.$store`访问到，如：
@@ -195,20 +193,19 @@ store.commit({
 **异步**,但是actions不能对数据，只能用commit调用mutations。参数是store,可以用{commit}，然后commit('mutations中的方法', 参数)，  `this.$store.dispatch`用于分发action
 
 #### Module
-
-#### 在其他地方用引入
+在其他地方用引入
 ```javascript
 //在其他地方用引入
 import {mapState,mapGetters,mapMuations, mapAtions} from 'vuex'
 export default {
-    computed:{
-        ...mapState(['increment'])//相当于将 `this.increment()` 映射为 `this.$store.commit('increment')`
-        ...mapGetters([''])
-    }
-    methods:{
-        ...mapMuations([''])
-        ...mapAtions([''])
-    }
+  computed:{
+    ...mapState(['increment'])//相当于将 `this.increment()` 映射为 `this.$store.commit('increment')`
+    ...mapGetters([''])
+  }
+  methods:{
+    ...mapMuations([''])
+    ...mapAtions([''])
+  }
 }
 ```
 
@@ -227,13 +224,13 @@ import modulesA from './modules/a'
 Vue.use(Vuex)
 const state = { ... }
 const store = new Vuex.Store({
-    state,
-    getters,
-    mutations,
-    actions,
-    modules: {
-        a: moduleA
-    }
+  state,
+  getters,
+  mutations,
+  actions,
+  modules: {
+      a: moduleA
+  }
 }
 })
 //热重载

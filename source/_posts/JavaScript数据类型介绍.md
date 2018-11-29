@@ -6,10 +6,24 @@ categories: 前端
 ---
 
 最新的 ECMAScript 标准定义了JS的 7 种数据类型<escape><!-- more --></escape>，其中包括：
-
 6 种基本类型:Boolean、Null、Undefined、Number、String、Symbol (ECMAScript 6 新定义)；
-
 1个引用类型： Object（包含狭义的对象，Array，function）。
+两种类型的值传递方式：基本类型是值传递，引用类型是引用传递。
+```javascript
+// 第一题 引用传递
+function test(m) { m.k = 5 }
+var m = {
+  k: 30
+}
+test(m)
+consol.log(m)  // 5
+
+// 第二题 值传递
+function test(m) { m = 5 }
+var m = 30
+test(m)
+consol.log(m)  // 30
+```
 
 ### 1  Boolean
 1. Bealean类型的值有两个：true、false

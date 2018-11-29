@@ -1,5 +1,5 @@
 ---
-title: LeetCode答题记录 201811
+title: LeetCode答题记录 easy
 date: 2018-10-30 22:54:10
 tags: JavaScript
 categories: 前端
@@ -61,7 +61,6 @@ var singleNumber = function(nums) {
     return result
 }
 
-// 大神的代码
 // ● success Runtime: 56 ms 
 var singleNumber = function(nums) { 
     return nums.reduce((a,b) => a ^ b)
@@ -89,7 +88,6 @@ var numUniqueEmails = function(emails) {
     return Array.from(new Set(result)).length
 }
 
-// 以下是来自大神的代码
 // ● success Runtime: 68 ms
 var numUniqueEmails = function(emails) {
 	return Array.from(new Set(emails.map(email => email.split('@')[1]))).length
