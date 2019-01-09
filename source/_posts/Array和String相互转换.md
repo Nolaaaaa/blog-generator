@@ -16,12 +16,12 @@ String([1,2,3])
 String(['1', '2', '3'])
 // "1,2,3"
 ```
-#### toString()
+#### .toString()
 ```JavaScript
 [1,2,3].toString()
 // "1,2,3"
 ```
-#### join()
+#### .join()
 ```JavaScript
 [1,2,3].join(",")
 // "1,2,3"
@@ -31,7 +31,7 @@ String(['1', '2', '3'])
 
 
 ### 2 String 转 Array
-#### split()
+#### .split()
 ```JavaScript
 // 一整个字符串
 "123".split("")  
@@ -49,7 +49,7 @@ String(['1', '2', '3'])
 "1, 2, 3".replace(/\s+/g,"").split(",")
 //  ["1", "2", "3"] 
 ```
-#### Array from()
+#### Array.from()
 ```JavaScript
 Array.from('foo')
 // ["f", "o", "o"]
@@ -58,18 +58,30 @@ Array.from('foo')
 function f() {
   return Array.from(arguments);
 }
-f(1, 2, 3);
+f(1, 2, 3)
 // [1, 2, 3]
 ```
-#### match()
+#### Array.prototype.slice.call()
+```JavaScript
+Array.prototype.slice.call('hello', 0, 2)
+//  ["h", "e"]
+
+function f() {
+  return Array.prototype.slice.call(arguments);
+}
+f(1, 2, 3)
+// [1, 2, 3]
+```
+#### .match()
 ```JavaScript
 'hello'.match(/l/g)
 // ["l", "l"]
 ```
-#### slice()
+#### 扩展运算符
+扩展运算符可以将字符串转为真正的数组。
 ```JavaScript
-Array.prototype.slice.call('hello', 0,2)
-//  ["h", "e"]
+[...'hello']
+// [ "h", "e", "l", "l", "o" ]
 ```
 
 
@@ -80,7 +92,7 @@ Array.prototype.slice.call('hello', 0,2)
 JSON.parse('['+ String(['1','2','3']) + ']')
 // [1, 2, 3]
 ```
-#### strArray.map(Number)
+#### .map()
 ```JavaScript
 ['1','2','3'].map(Number)
 // [1, 2, 3]
