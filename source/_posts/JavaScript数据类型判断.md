@@ -8,9 +8,9 @@ categories: 前端
 Typeof()、instanceof运算符、Object.prototype.toString.call()、constructor属性都可以判断数据类型
 <escape><!-- more --></escape>
 ### 1  Typeof()
-判断基本数据类型（基本类型number、string、boolean、undefined，除了null。）⚠️不能区分对象、数组、null、引用类型
+判断基本数据类型（基本类型number、string、boolean、undefined，除了null。）⚠️不能区分对象、数组、null等
 ```javascript
-//typeof()输出有五种数据类型  number   string    boolean   undefined   object以及以及函数类型 function
+//typeof()输出有五种数据类型  number   string    boolean   undefined   object   function
 
 typeof("")  //"string"
 typeof(1) //"number"
@@ -27,7 +27,7 @@ typeof(null)  //"object"                  null返回对象
 ### 2  instanceof运算符
 判断引用类型（引用类型，即对象类型。创建对象后可以调用这个对象下的方法有Object类型、Array类型、Date类型、RegExp类型、Function类型，包装类型（Boolean、Number、String）等。）
 ```javascript
-//nstanceof对引用类型进行判断
+//instanceof对引用类型进行判断
 {} instanceof Object;     //true
 [] instanceof Array;       //true
 new Date() instanceof Date;        //true

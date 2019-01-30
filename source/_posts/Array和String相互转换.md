@@ -8,7 +8,7 @@ categories: 前端
 Array 转 String、String 转 Array、字符串Array转换成数字Array
 <escape><!-- more --></escape>
 
-### 1 Array 转 String
+### Array 转 String
 #### String()
 ```JavaScript
 String([1,2,3])
@@ -30,7 +30,7 @@ String(['1', '2', '3'])
 ```
 
 
-### 2 String 转 Array
+### String 转 Array
 #### .split()
 ```JavaScript
 // 一整个字符串
@@ -85,7 +85,7 @@ f(1, 2, 3)
 ```
 
 
-### 3 字符串Array转换成数字Array
+### 字符串 Array 转换成数字 Array
 如： `[var str = '1','2','3']=>[1,2,3]`
 #### JSON.parse() + String()
 ```JavaScript
@@ -98,3 +98,11 @@ JSON.parse('['+ String(['1','2','3']) + ']')
 // [1, 2, 3]
 ```
 
+
+### Object 转 Array
+```JavaScript
+var obj = {one: 'hello', two: 'world'}
+var arr = Object.keys(obj)
+arr = arr.map(function(i){return obj[i]})
+// ["hello", "world"]
+```
