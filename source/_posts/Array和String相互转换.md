@@ -106,3 +106,17 @@ var arr = Object.keys(obj)
 arr = arr.map(function(i){return obj[i]})
 // ["hello", "world"]
 ```
+
+
+### 伪数组 转 数组
+#### Array.prototype.slice.call(arguments)
+#### Array.from(arguments)
+#### [...arguments]
+```JavaScript
+function foo() { 
+  console.log(Array.prototype.slice.call(arguments))
+  console.log(Array.from(arguments))
+  console.log([...arguments]) 
+}
+foo(1,2,3,4)
+```
