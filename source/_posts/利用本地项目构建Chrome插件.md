@@ -11,7 +11,7 @@ categories: 前端
 ### 1 配置 manifest.json
 把普通项目变成Chrome 插件的核心是配置一个名为 `manifest.json`的文件并添加到根目录中[点击差点配置文档](https://developer.chrome.com/extensions/manifest)
 简单的`manifest.json`配置项如下：
-```json
+```js
 {
   // 插件名，必写
   "name": "Todo", 
@@ -35,9 +35,9 @@ categories: 前端
 ```
 
 ### 2 浏览器添加插件
-打开 Chrome -- 设置 -- 扩展程序 ，或者直接在地址栏输入：chrome://extensions
-在扩展程序页面右上角勾选 开发者模式 -- 点击左上角的 加载正在开发的扩展程序 按钮 -- 选择扩展所在的文件夹，此时在浏览器工具栏中看到新添加的扩展。
-在浏览器窗口新开一个标签页，此时新标签页初始显示的就是刚刚设置的导航页啦~~~~~~~
+1 `打开 Chrome` -- `设置` -- `扩展程序` ，或者直接在地址栏输入：`chrome://extensions`
+2 在扩展程序页面右上角勾选 `开发者模式 `-- 点击左上角的 `加载正在开发的扩展程序 `按钮 -- `选择扩展所在的文件夹`，此时在浏览器工具栏中看到新添加的扩展。
+3 在浏览器窗口`新开一个标签页`，此时新标签页初始显示的就是刚刚设置的导航页啦~~~~~~~
 
 ### 3 解决 vue.js 写的插件在浏览器打开一片空白的问题
 **出现空白的原因Vue官方解释如下：：**
@@ -47,14 +47,13 @@ categories: 前端
 **解决方法：**
 1 下载 csp 兼容版本的vue（最新的只有vue 1.x的）
 2 使用安全策略方案，在`manifest.json`文件添加如下一行：
-```json
+```js
 {
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self';"
 }
 ```
 
 **实践项目地址：**
-[普通项目地址](https://github.com/Nolaaaaa/navigation-page)
-[vue项目地址](https://github.com/Nolaaaaa/todo)
+[普通的](https://github.com/Nolaaaaa/navigation-page)   [vue的](https://github.com/Nolaaaaa/todo)
 
 ps: vue项目的`manifest.json`文件是放在打包文件dist目录里，设置插件的时候选择dist目录即可。
