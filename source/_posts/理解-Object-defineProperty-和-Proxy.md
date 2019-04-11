@@ -16,10 +16,10 @@ categories: 前端
 ```js
 let obj = {}
 Object.defineProperty(obj,"key",{
-value: '',
-writable: true | false,
-configurable: true | false
-enumerable: true | false
+  value: '',
+  writable: true | false,
+  configurable: true | false,
+  enumerable: true | false,
 })
 // value: 设置属性的值
 // writable: 值是否可以重写。true | false
@@ -32,27 +32,28 @@ ps：一旦使用 `Object.defineProperty` 给对象添加属性，那么如果�
 ```js
 let obj = {}
 Object.defineProperty(obj,"key",{
-get:function (){} | undefined,
-set:function (value){} | undefined
-configurable: true | false
-enumerable: true | false
+  get:function (){} | undefined,
+  set:function (value){} | undefined,
+  configurable: true | false,
+  enumerable: true | false,
 })
 // get: 给属性提供 getter 的方法，如果无 getter 则为 undefined
 // set: 给属性提供 setter 的方法，如果无 setter 则为 undefined，设置的新值可通过value获取
 ```
+
 ps：当使用了 `getter` 或 `setter`方法，不允许使用 `writable` 和 `value` 这两个属性。
 使用示例：
 ```js
 let obj = {}
 let value = 'old value'
 Object.defineProperty(obj,"key",{
-get:function (){
-//获取值时触发
-return value
+  get:function (){
+  //获取值时触发
+  return value
 },
 set:function (newvalue){
-//设置新值时触发,设置的新值可通过 newvalue 获取
-value = newvalue
+  //设置新值时触发,设置的新值可通过 newvalue 获取
+  value = newvalue
 }
 })
 //获取值
@@ -73,18 +74,18 @@ console.log( obj.key ) // new value
 let handler = {
 // set 有3个参数，obj（对象）, prop（属性）, value（新添加的值），get 有2个参数，obj, prop
 set: function(obj, prop, value) {
-// 如参数名是 age 就执行如下的判断（报错则无法执行赋值操作，赋值无效）
-if (prop === 'age') {
-if (!Number.isInteger(value)) {
-throw new TypeError('The age is not an integer')
-}
-if (value > 200) {
-throw new TypeError('The age seems invalid')
-}
-}
-// 赋值
-obj[prop] = value;
-}
+  // 如参数名是 age 就执行如下的判断（报错则无法执行赋值操作，赋值无效）
+  if (prop === 'age') {
+  if (!Number.isInteger(value)) {
+    throw new TypeError('The age is not an integer')
+  }
+  if (value > 200) {
+    throw new TypeError('The age seems invalid')
+  }
+  }
+  // 赋值
+  obj[prop] = value;
+  }
 }
 
 let person = new Proxy({}, handler)
@@ -98,3 +99,21 @@ person.age = 300 // 抛出异常: Uncaught TypeError: The age seems invalid
 person.name = 'Nola' // "Nola"
 console.log(person) // Proxy {age: 100, name: "Nola"}
 ```
+
+### 3 bject.defineProperty VS Proxy
+Object.defineProperty缺点：
+1. Object.defineProperty只能劫持对象的属性,因此我们需要对每个对象的每个属性进行遍历。
+2. 在Vue中，Object.defineProperty无法监控到数组下标的变化，导致直接通过数组的下标给数组设置值，不能实时响应。
+
+Proxy优点：
+1. 可以劫持整个对象，并返回一个新对象。
+2. Proxy可以直接监听数组的变化
+3. 有多种劫持操作。
+
+Proxy缺点：
+1. Proxy是es6提供的新特性，兼容性不好，且这个属性无法用polyfill来兼容。
+
+参考资料：
+[ECMAScript 6 入门-Proxy](http://es6.ruanyifeng.com/#docs/proxy)
+[defineProperty VS Proxy](http://www.10tiao.com/html/780/201812/2650588659/1.html)
+[实现双向绑定 Proxy比 defineproperty优劣如何](https://juejin.im/post/5acd0c8a6fb9a028da7cdfaf)

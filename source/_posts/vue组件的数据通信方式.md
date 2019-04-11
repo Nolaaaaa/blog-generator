@@ -1,6 +1,6 @@
 ---
 title: vue组件的数据通信方式
-date: 2019-03-28 21:44:11
+date: 2019-02-02 21:44:11
 tags: [Vue]
 categories: 前端
 ---
