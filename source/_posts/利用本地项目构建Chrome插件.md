@@ -9,7 +9,7 @@ categories: 前端
 <escape><!-- more --></escape>
 
 ### 1 配置 manifest.json
-把普通项目变成Chrome 插件的核心是配置一个名为 `manifest.json`的文件并添加到根目录中[点击差点配置文档](https://developer.chrome.com/extensions/manifest)
+把普通项目变成Chrome 插件的核心是配置一个名为 `manifest.json`的文件并添加到根目录中[点击查看配置文档](https://developer.chrome.com/extensions/manifest)
 简单的`manifest.json`配置项如下：
 ```js
 {
