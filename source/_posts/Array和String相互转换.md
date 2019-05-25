@@ -86,7 +86,7 @@ f(1, 2, 3)
 
 
 ### 字符串 Array 转换成数字 Array
-如： `[var str = '1','2','3']=>[1,2,3]`
+如： `['1','2','3']=>[1,2,3]`
 #### JSON.parse() + String()
 ```JavaScript
 JSON.parse('['+ String(['1','2','3']) + ']')

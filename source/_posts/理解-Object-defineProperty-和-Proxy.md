@@ -48,13 +48,13 @@ let obj = {}
 let value = 'old value'
 Object.defineProperty(obj,"key",{
   get:function (){
-  //获取值时触发
-  return value
-},
-set:function (newvalue){
-  //设置新值时触发,设置的新值可通过 newvalue 获取
-  value = newvalue
-}
+    //获取值时触发
+    return value
+  },
+  set:function (newvalue){
+    //设置新值时触发,设置的新值可通过 newvalue 获取
+    value = newvalue
+  }
 })
 //获取值
 console.log( obj.key ) // old value
@@ -76,12 +76,12 @@ let handler = {
 set: function(obj, prop, value) {
   // 如参数名是 age 就执行如下的判断（报错则无法执行赋值操作，赋值无效）
   if (prop === 'age') {
-  if (!Number.isInteger(value)) {
-    throw new TypeError('The age is not an integer')
-  }
-  if (value > 200) {
-    throw new TypeError('The age seems invalid')
-  }
+    if (!Number.isInteger(value)) {
+      throw new TypeError('The age is not an integer')
+    }
+    if (value > 200) {
+      throw new TypeError('The age seems invalid')
+    }
   }
   // 赋值
   obj[prop] = value;
@@ -100,7 +100,7 @@ person.name = 'Nola' // "Nola"
 console.log(person) // Proxy {age: 100, name: "Nola"}
 ```
 
-### 3 bject.defineProperty VS Proxy
+### 3 Object.defineProperty VS Proxy
 Object.defineProperty缺点：
 1. Object.defineProperty只能劫持对象的属性,因此我们需要对每个对象的每个属性进行遍历。
 2. 在Vue中，Object.defineProperty无法监控到数组下标的变化，导致直接通过数组的下标给数组设置值，不能实时响应。
