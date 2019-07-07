@@ -9,16 +9,16 @@ categories: 前端
 <escape><!-- more --></escape>
 
 ### 基本类型
-**boolean**：`let temp: boolean = false`。注意：new Boolean(1)返回的是Boolean 对象，Boolean(1)返回的是boolean 类型
+**boolean**：`let temp: boolean = false`。注意：`new Boolean(1)`返回的是Boolean 对象，`Boolean(1)`返回的是boolean 类型
 **number**：Ts中的16进制转化为Js的时候还是16进制，但是2、8进制会转化成10进制
 **string**：可用模板字符串
-**void**：空值，可以用 void 表示没有任何返回值的函数，声明一个 void 类型的变量没有什么用，因为你只能将它赋值为 undefined 和 null
-**null 和 undefined**：与 void 的区别是，undefined 和 null 是所有类型的子类型，可以赋值给 number 类型的变量，而 void 不可以
-**any**：任意值，允许被赋值为任意类型，对它的任何操作，返回的内容的类型也都是任意值。变量声明时，未指定其类型，且定义时未赋值，则默认为 any 类型。
+**void**：空值，可以用 `void` 表示没有任何返回值的函数，声明一个 `void` 类型的变量没有什么用，因为你只能将它赋值为 undefined 和 null
+**null 和 undefined**：与 `void` 的区别是，`undefined` 和 `null` 是所有类型的子类型，可以赋值给 `number` 类型的变量，而 `void` 不可以
+**any**：任意值，允许被赋值为任意类型，对它的任何操作，返回的内容的类型也都是任意值。变量声明时，未指定其类型，且定义时未赋值，则默认为 `any` 类型。
 
 **类型推论：**
 如果定义时未指定其类型，且**赋值**，则会根据定义时所赋值的类型来推断其类型。
-PS：如果定义时未指定其类型，且**未赋值**，则默认为 any 类型。
+PS：如果定义时未指定其类型，且**未赋值**，则默认为 `any `类型。
 
 ### 字符串字面量类型
 用来约束取值只能是某几个字符串中的一个
@@ -96,14 +96,14 @@ PS：类数组不是数组，不能用数组的方式定义，可用类数组自
 // ts 函数声明的类型定义
 function sum(x: number, y: number): number { return x + y }
 // ts 函数表达式的类型定义
-let mySum: (x: number, y: number) => number = function (x: number, y: number): number { return x + y }
+let sum: (x: number, y: number) => number = function (x: number, y: number): number { return x + y }
 // 使用接口定义函数需要的形状
 interface Func { 
-  (source: string, subString: string): boolean;
+  (x: string, y: string): boolean;
   interval: number;  // 定义函数自己的属性
   reset(): void;   // 定义函数自己的方法
 }
-let foo: Func
+let sum: Func
 ```
 使用注意：
 1. 使用时的参数不能 少于/多于 所定义的参数数量
@@ -114,7 +114,7 @@ let foo: Func
 6. 重载：允许一个函数接受不同数量或类型的参数时，作出不同的处理
 
 ### 类
-类的用法具体参考：[TypeScript入门教程 - 类](https://ts.xcatliu.com/advanced/class)和[ECMAScript 6 入门 - Class](https://ts.xcatliu.com/advanced/class)
+类的用法具体参考：[TypeScript入门教程 - 类](https://ts.xcatliu.com/advanced/class)和[ECMAScript 6 入门 - Class](http://es6.ruanyifeng.com/)
 1. (ES6)类的继承：使用 `extends` 实现继承，如：`class A extends B`，子类中使用 `super` 调用父类的构造函数和方法
 2. (ES6)静态方法：使用 `static` 修饰，如：`static tamp(a)`，它们**不需要实例化**，而是**直接通过类来调用**
 3. (ES7)静态属性：使用 `static` 修饰，如：`static age = 24`
@@ -156,15 +156,27 @@ function foo<T extends U, U>(value: T, source: U): T    // 多个类型参数之
 通过 `<script>` 标签引入第三方库
 1. 声明文件必需以 `.d.ts` 为后缀
 2. 声明语句只能定义类型，不能在声明语句中定义具体的实现，`declare let Name: (selector: string) => any;`
-3. 全局变量的声明文件的几种语法：`declare var` 声明全局变量，`declare function` 声明全局方法，`declare class` 声明全局类，`declare enum` 声明全局枚举类型，`declare namespace` 声明（含有子属性的）全局对象，`interface` 和 `type` 声明全局类型
+3. 全局变量的声明文件的几种语法：
+  * `declare var` 声明全局变量
+  * `declare function` 声明全局方法
+  * `declare class` 声明全局类
+  * `declare enum` 声明全局枚举类型
+  * `declare namespace` 声明（含有子属性的）全局对象
+  * `interface` 和 `type` 声明全局类型
 4. 为防止命名冲突，应尽可能的减少全局变量或全局类型的数量，最好将他们放到 `declare namespace` 下
 
 #### npm 包的声明文件
 通过 `import foo from 'foo'` 导入
 2. 创建声明文件前先看看它的声明文件是否已经存在
-3. npm 包声明文件存在的地方：第一：与该 `npm` 包绑定在一起。判断依据是 `package.json` 中有 `types` 字段，或者有一个 `index.d.ts` 声明文件；第二：`@types` 里，尝试安装一下对应的 `@types` 包就知道是否存在该声明文件
-4. 创建 `npm` 包声明文件的方法：第一种：创建一个 `node_modules/@types/foo/index.d.ts` 文件，存放 `foo` 模块的声明文件（有风险，如无法版本回溯或可能被删掉，不推荐）；第二种：创建一个 types 目录，专门用来管理自己写的声明文件，将 `foo` 的声明文件放到 `types/foo/index.d.ts` 中。这种方式需要配置下 `tsconfig.json` 中的 `paths` 和 `baseUrl` 字段
-5. npm 包的声明文件的几种语法：`export` 导出变量（如：`export const/function/class/enum/interface`，`export namespace` 导出（含有子属性的）对象，也可以用`declare`声明多个变量（`interface` 不用加 `declare`），再用`export`导出 `export { name、age }`）、`export default` ES6 默认导出（导入时用`import foo from 'foo'` 而不是 `import { foo } from 'foo'`，只有 `function`、`class` 和 `interface` 可以直接默认导出，其他的变量需要先定义出来，再默认导出，如：`export default enum` 是错误的语法，需要使用 `declare enum` 先定义）、commonjs 规范的导出 `export = xxx`（导入方法：`const ... = require('...')`/`import ... from`/`import ... =  require('...')`）
+3. npm 包声明文件存在的地方：
+	* 第一：与该 `npm` 包绑定在一起。判断依据是 `package.json` 中有 `types` 字段，或者有一个 `index.d.ts` 声明文件
+	* 第二：`@types` 里，尝试安装一下对应的 `@types` 包就知道是否存在该声明文件
+4. 创建 `npm` 包声明文件的方法：
+	* 第一种：创建一个 `node_modules/@types/foo/index.d.ts` 文件，存放 `foo` 模块的声明文件（有风险，如无法版本回溯或可能被删掉，不推荐）
+  * 第二种：创建一个 types 目录，专门用来管理自己写的声明文件，将 `foo` 的声明文件放到 `types/foo/index.d.ts` 中。这种方式需要配置下 `tsconfig.json` 中的 `paths` 和 `baseUrl` 字段
+5. npm 包的声明文件的几种语法：
+	* **export 导出变量**（如：`export const/function/class/enum/interface`，`export namespace` 导出（含有子属性的）对象，也可以用`declare`声明多个变量（`interface` 不用加 `declare`），再用`export`导出 `export { name、age }`）
+	* **export default ES6 默认导出**（导入时用`import foo from 'foo'` 而不是 `import { foo } from 'foo'`，只有 `function`、`class` 和 `interface` 可以直接默认导出，其他的变量需要先定义出来，再默认导出，如：`export default enum` 是错误的语法，需要使用 `declare enum` 先定义）、commonjs 规范的导出 `export = xxx`（导入方法：`const ... = require('...')`/`import ... from`/`import ... =  require('...')`）
 
 #### UMD 库的声明文件
 可以通过 `<script>` 标签引入，又可以通过 `import` 导入
@@ -172,9 +184,9 @@ function foo<T extends U, U>(value: T, source: U): T    // 多个类型参数之
 2. `export as namespace`可与`export default`一起使用
 
 #### 改变全局变量的类型
-直接扩展全局变量：通过 `<script>` 标签引入后，改变一个全局变量的结构，通过声明合并（如扩展`String`可使用`interface String`）、使用 `declare namespace` 给已有的命名空间添加类型声明
+1. **直接扩展全局变量**：通过 `<script>` 标签引入后，改变一个全局变量的结构，通过声明合并（如扩展`String`可使用`interface String`）、使用 `declare namespace` 给已有的命名空间添加类型声明
 在 npm 包或 UMD 库中扩展全局变量：引用 `npm` 包或 `UMD` 库后，改变一个全局变量的结构，语法为：`declare global`
-模块插件：通过 `<script>` 或 `import` 导入后，改变另一个模块的结构，语法为：`declare module`
+2. **模块插件**：通过 `<script>` 或 `import` 导入后，改变另一个模块的结构，语法为：`declare module`
 
 #### 自动生成声明文件
 如果库的源码本身就是由 ts 写的，那么在使用 tsc 脚本将 ts 编译为 js 的时候，添加 declaration 选项，就可以同时也生成 .d.ts 声明文件
