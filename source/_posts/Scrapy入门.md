@@ -59,3 +59,11 @@ cmdline.execute('scrapy crawl test_spider'.splite())
 
 ### 爬虫文件中写xpath解析内容
 可利用谷歌插件[XPath helper](https://chrome.google.com/webstore/search/XPath%20helper?hl=zh-CN)编写xpath
+用xpath解析完了之后，需将数据yield到pipelines里面去才能正常导出数据
+
+### 保存数据
+导出数据存储为json文件：
+```bash
+$ scrapy crawl test_spider -o test.json
+```
+也可存为csv格式，后缀改一下就好了
