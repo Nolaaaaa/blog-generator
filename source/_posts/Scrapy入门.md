@@ -5,7 +5,7 @@ tags: [Python]
 categories: 后端
 ---
 
-记录Scrapy入门的过程及中间遇到的一些坑
+记录Scrapy入门的过程及中间遇到的一些坑。最近在爬网易云热评（对于获取歌曲列表的反爬还没做处理，目前只能一个歌单一个歌单爬），为了方便查看，顺便写了个网页专门用来展示网易云热评（热评质量参差不齐，以后再慢慢做数据筛选叭）。热评地址：https://nolaaaaa.github.io/demo/scrapy-wangyiyun/index。 ​​
 <escape><!-- more --></escape>
 
 ### 新建scrapy项目 test
@@ -66,7 +66,7 @@ cmdline.execute('scrapy crawl test_spider'.splite())
 ```bash
 $ scrapy crawl test_spider -o test.json
 ```
-也可存为csv格式，后缀改一下就好了
+也可存为csv格式，后缀改一下就好了​​
 
 ### 保存数据到数据库 pipelines.py
 第一步：在`pipelines`文件里进行编辑
