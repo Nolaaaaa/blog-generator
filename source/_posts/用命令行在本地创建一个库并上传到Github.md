@@ -1,5 +1,5 @@
 ---
-title: 用命令行在本地创建一个库并上传到Github
+title: 用命令行Git在本地创建一个库并上传到Github
 date: 2018-04-4 19:08:02
 tags: [SSH,Git]
 categories: 前端
@@ -123,4 +123,9 @@ $ git push
 ```js
 $ git add *  git会自动把你当前目录所有修改过的文件添加
 $ git add .  git会递归地将你执行命令时所在的目录中的所有文件添加上去
+```
+
+### 检查已有的配置信息
+```js
+$ git config --list
 ```
