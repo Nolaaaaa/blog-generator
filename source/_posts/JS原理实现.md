@@ -1,5 +1,5 @@
 ---
-title: JS原理实现
+title: JS原理性知识的函数实现
 date: 2019-07-10 19:50:01
 tags: JavaScript
 categories: 前端
@@ -9,7 +9,7 @@ JS一些原理性的知识用函数自己实现
 <escape><!-- more --></escape>
 
 
-#### 实现一个 new 
+### new 
 
 ```JS
 const People = function(name) {
@@ -32,7 +32,7 @@ function _new(fn, ...arg) {
 let my = _new(People, 'Nola')
 ```
 
-#### 实现简单的双向绑定
+### 双向绑定
 查看效果：[地址](https://jsbin.com/sinuwufolo/2/edit?html,js,output)
 ```js
 var input = document.getElementById('input')
@@ -66,5 +66,40 @@ var obj = new Proxy({}, {
     show.innerText = newValue
   }
 })
+```
+
+### call
+```JS
+Function.prototype.call = function(context, ...args) {
+  context || (context = window)
+  context.fn = this
+  let args = []
+  let result = eval(`context.fn(${args})`)
+  delete context.fn
+  return result
+}
+```
+
+### apply
+```JS
+Funtion.prototype.apply = function(context, args) {
+  context || (context = window)
+  context.fn = this
+  let result = eval(`context.fn(${args})`)
+  delete context.fn
+  return result
+}
+```
+
+### bind
+```JS
+Funtion.prototype.bind = function(context) {
+  if(type of this !== 'function') return
+  var _self = this
+  var args = [].slice.call(arguments, 1)
+  return function() {
+    return _self.apply(context, args.concat([].slice.call(arguments)))
+  }
+}
 ```
 

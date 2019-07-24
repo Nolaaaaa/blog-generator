@@ -129,3 +129,9 @@ $ git add .  git会递归地将你执行命令时所在的目录中的所有文�
 ```js
 $ git config --list
 ```
+
+### 给git配置别名
+```js
+// 给 commit 起一个别名 ci
+$ git config --global alias.ci commit
+```

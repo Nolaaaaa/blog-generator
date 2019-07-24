@@ -180,12 +180,6 @@ let min = Math.min(...arr)
 let max = Math.max(...arr)
 ```
 
-### 给git配置别名
-```js
-// 给 commit 起一个别名 ci
-$ git config --global alias.ci commit
-```
-
 ### 创建一个可迭代对象
 ```js
 var foo = {
@@ -206,4 +200,64 @@ foo[Symbol.iterator] = function() {
 }
 // Set函数接受一个具有 iterable 接口数据结构，否则会报错
 new Set(foo)  // Set(4) {"00", "11", "22", "33"} 
+```
+
+### 使 a === a - 1 为true
+使用 Infinity 可以做到，但是怎么才能得到正负Infinity的值？方法一：数值运算的值，超过了Number允许表示的范围；方法二：将一个不为0的正负数除以0
+```JS
+// 无穷小的数
+a = -Infinity
+console.log(a === a - 1)  // true
+
+// 无穷大的数
+a = Infinity
+console.log(a === a - 1)  // true
+
+// 无穷数的运算
+Infinity + Infinity  // Infinity
+Infinity - Infinity  // NaN
+Infinity * Infinity  // Infinity
+Infinity / Infinity  // NaN
+Infinity * 0         // NaN
+```
+
+### 使 a == 1 && a == 2 && a == 3 返回 true
+在引擎读取 a 的值时，在方法内部做处理
+**实现宽松相等 ==**
+```JS
+// 方法一：使用 toString 或者 valueOf
+a = {
+  i: 1,
+  toString: () => a.i++, 
+  valueOf: () => a.i++,
+}
+
+// 方法二：使用 Proxy 
+a = new Proxy({ i: 1 }, {
+  get(obj) { return () => obj.i++ }
+}) 
+
+console.log(a == 1 && a == 2 && a == 3)  // true
+```
+**实现严格相等 ===**
+```js
+// 方法一：
+i = 1
+Object.defineProperty(window, 'a', {
+  get: () => i++ 
+})
+
+// 方法二：
+value = function* () {
+  let i = 1
+  while(true) yield i++
+}()
+
+Object.defineProperty(window, 'a', {
+  get() {
+    return value.next().value
+  }
+})
+
+console.log(a === 1 && a === 2 && a === 3)  // true
 ```

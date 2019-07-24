@@ -9,7 +9,7 @@ categories: 前端
 <escape><!-- more --></escape>
 
 
-#### 防抖
+### 防抖
 防抖查看效果：[地址](https://jsbin.com/religexeka/61/edit?html,js,output)
 ```JS
 // 触发间隔超过指定间隔的任务才会执行，连续发生动作会刷新时间
@@ -24,7 +24,7 @@ function debounce(fn, delay, ...args) {
 }
 ```
 
-#### 节流
+### 节流
 节流查看效果：[地址](https://jsbin.com/religexeka/61/edit?html,js,output)
 ```JS
 // 在指定间隔内任务只执行一次，连续发生的动作会被忽略
