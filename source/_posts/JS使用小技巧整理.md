@@ -12,11 +12,11 @@ categories: 前端
 ### 将多维数组展平
 **第一种：不指定展平级别，只展平一级**
 ```js
-var arr = ['a', 'b', ['c', ['d']]];
+var arr = ['a', 'b', ['c', ['d']]]
 
-var flat1_1 = [].concat.apply([], arr);
-var flat1_2 = [].concat(...arr);
-var flat1_3 = arr.flat();
+var flat1_1 = [].concat.apply([], arr)
+var flat1_2 = [].concat(...arr)
+var flat1_3 = arr.flat()
 
 console.log(flat1_1,flat1_2,flat1_3)   // ["a", "b", "c", ["d"]]
 ```
@@ -97,7 +97,7 @@ let randomColor = () => "#" + Math.floor(Math.random() * 0xffffff).toString(16).
 console.log(randomColor())  // #8980eb
 
 // 生成范围随机数
-let randomNum = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+let randomNum = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min
 console.log(randomNum(1, 10))
 
 // 数组值随机排列
@@ -191,12 +191,12 @@ var foo = {
 }
 // 使对象可迭代 如果没有这一步，会报 object is not iterable 的错
 foo[Symbol.iterator] = function() {
-	let i = 0, that = this
-	return {
-		next() {
-			return i < that.length ? { done: false, value: that[i++] } : { done: true }
-		}
-	}
+  let i = 0, that = this
+  return {
+    next() {
+      return i < that.length ? { done: false, value: that[i++] } : { done: true }
+    }
+  }
 }
 // Set函数接受一个具有 iterable 接口数据结构，否则会报错
 new Set(foo)  // Set(4) {"00", "11", "22", "33"} 
@@ -260,4 +260,27 @@ Object.defineProperty(window, 'a', {
 })
 
 console.log(a === 1 && a === 2 && a === 3)  // true
+```
+
+### 利用 a 标签解析 URL
+```JS
+function parseURL(url) {
+  let a =  document.createElement('a')
+  a.href = url
+  return {
+    host: a.hostname,
+    port: a.port,
+    query: a.search,
+    params: (function(){
+      var result = {}, str = a.search.replace(/^\?/,'').split('&')    
+      for (let i in str) {
+        let s = str[i].split('=')
+        result[s[0]] = s[1]
+      }
+      return result
+    })(),
+    hash: a.hash.replace('#','')
+  }
+}
+parseURL('https://www.google.com:8008?a=1&b=2')
 ```

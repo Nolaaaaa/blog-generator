@@ -16,13 +16,13 @@ var m = {
   k: 30
 }
 test(m)
-consol.log(m)  // 5
+console.log(m.k)  // 5
 
 // 第二题 值传递
 function test(m) { m = 5 }
 var m = 30
 test(m)
-consol.log(m)  // 30
+console.log(m)  // 30
 ```
 
 ### 1  Boolean
