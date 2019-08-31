@@ -283,4 +283,7 @@ function parseURL(url) {
   }
 }
 parseURL('https://www.google.com:8008?a=1&b=2')
+
+// 其他快速url参数的方法
+new URLSearchParams(location.search).get("a")  // 1
 ```
