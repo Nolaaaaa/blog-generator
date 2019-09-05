@@ -9,18 +9,18 @@ categories: 前端
 <escape><!-- more --></escape>
 
 ## Vue
-### 1  vue的computed属性和methods区别
+### vue的computed属性和methods区别
 1. computed是响应式的，methods并非响应式。
 2. 调用方式不一样，computed定义的成员像属性一样访问，methods定义的成员必须以函数形式调用。
 3. computed是带缓存的，只有其引用的响应式属性发生改变时才会重新计算，而methods里的函数在每次调用时都要执行。
 4. computed中的成员可以只定义一个函数作为只读属性，也可以定义get/set变成可读写属性，这点是methods中的成员做不到的
 
-### 2  Vue 的双向绑定是如何实现的？如何追踪变化？
+### Vue 的双向绑定是如何实现的？如何追踪变化？
 把一个普通的 JavaScript 对象传给 Vue 实例的 data 选项，Vue 将遍历此对象所有的属性，并使用 Object.defineProperty 把这些属性全部转为 getter/setter。
 这些 getter/setter 对用户来说是不可见的，但是在内部它们让 Vue 追踪依赖，在属性被访问和修改时通知变化。
 [vue响应式原理](https://cn.vuejs.org/images/data.png)
 
-### 3  父子通信
+### 父子通信
 组件关系可分为父子组件通信、兄弟组件通信（new Vue() 作为 eventBus）、跨级组件通信。
 父子组件通信的方法为：子组件通过props方法接受父组件的data数据，子组件通过 $emit 触发父组件的自定义事件，举例如
 ```java
@@ -42,11 +42,11 @@ on和emit的事件必须是在一个公共的实例上，才能触发
 父组件用$on()监昕子组件的事件`@logout =“logout”`
 [父子通信](https://images2018.cnblogs.com/blog/1047894/201804/1047894-20180408144143328-388340893.png)
 
-### 4  v-show和v-if指令的共同点和不同点
+### v-show和v-if指令的共同点和不同点
 **v-show**指令是通过修改元素的display的CSS属性让其显示或者隐藏
 **v-if**指令是直接销毁和重建DOM达到让元素显示和隐藏的效果
 
-### 5  生命周期
+### 生命周期
 生命周期，即Vue 实例从创建到销毁的过程，一共分为8个阶段。生命周期可以让我们在控制整个Vue实例时形成好的逻辑。第一次页面加载时会触发 beforeCreate, created, beforeMount, mounted 这几个钩子。DOM 在 mounted时渲染完成。[Vue生命周期举例](http://www.cnblogs.com/gagag/p/6246493.html)[API — Vue.js](https://cn.vuejs.org/v2/api/%23%E9%80%89%E9%A1%B9-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90)
 **创建前/后：** 
 **beforeCreated**阶段，vue实例的挂载元素$el和数据对象data都为undefined，还未初始化。这个时候可以加loading事件。
@@ -60,7 +60,7 @@ on和emit的事件必须是在一个公共的实例上，才能触发
 **beforeDestroy**时可以做一个确认停止事件的确认框。执行 **destroy** 方法后，对data的改变不会再触发周期函数，说明此时vue实例已经解除了事件监听以及和dom的绑定，但是dom结构依然存在
 ![生命周期](https://i.loli.net/2018/08/18/5b77c66918abe.png)
 
-### 6  Scss在Vue.cli中怎么安装使用？
+### css在Vue.cli中怎么安装使用？
 **Scss：**
 可以用变量，例如（$变量名称=值）
 可以用混合器，例如（）
@@ -74,11 +74,11 @@ npm i -D node-sass
 <style lang="scss">
 ```
 
-### 7  什么是MVVM
+### 什么是MVVM
 ViewModel 通过双向数据绑定把 View 层和 Model 层连接了起来，而View 和 Model 之间的同步工作是自动的，无需人为操作DOM。
 MVVM主要解决了MVC中大量的DOM 操作使页面渲染性能降低，加载速度变慢的缺陷
 
-### 8  一些报错及解决方法
+### 一些报错及解决方法
 1. Vue空格等报错解决方法
 ```javascript
 //注释掉webpack.base.config.js文件中的如下代码
@@ -97,7 +97,7 @@ const createLintingRule = () => ({
 2. Vue去掉警告 You are running Vue in development mode
 在js中加一句：`Vue.config.productionTip=false`
 
-### 9  使用Vue时的注意事项及一些小技巧
+### 使用Vue时的注意事项及一些小技巧
 1. vue实例挂载点，不能是div和html
 2. 单vue组件，template必需且只能有一个根结点
 3. 监听一个vue组件的input时加.native`@keyup.enter.native="addTodo"`
@@ -120,10 +120,31 @@ new Vue({
 6. 渲染时莫名其妙报错可以用`:key="xxx.id"`解决。原因：key的值是需要是唯一识别的
 7. 避免` v-if `和` v-for` 用在一起。为什么？因为v-for 比 v-if 具有更高的优先级，通过v-if 移动到容器元素，不会再重复遍历列表中的每个值。只检查它一次，且不会在 v-if 为否的时候运算 v-for。
 
+### 图片资源懒加载
+```JS
+// 下载
+$ npm install vue-lazyload --save-dev
+// 引入
+import VueLazyload from 'vue-lazyload'
+Vue.use(VueLazyload)
+// 使用
+<img v-lazy="/static/img/1.png">
+```
+
+### 性能优化
+1. 频繁切换条件场景用`v-show`，不频繁的切换使用`v-if`。（`v-show`元素一直被渲染； `v-if`条件为真时才渲染）
+2. 依赖的属性值进行数值计算时使用`computed`，监听数据变化后执行异步或开销较大的操作时使用`watch`
+3. `v-for`比`v-if`优先级高，如使用在同一个标签，会意味着每个循环都会执行`v-if`，如果不是每个循环都需要判断，最好将`v-if`放在循环外面
+4. 如果内容不需要改动，可将数据`Object.freeze(data)`冻结起来，防止Vue通过 `Object.defineProperty`对数据进行劫持
+5. 由于在Vue组件内使用`addEventListene`等方式是不会自动销毁的，所以需要在组件销毁时手动`removeEventListener`移除这些事件的监听，以免造成内存泄露
+6. 图片路由资源懒加载
+7. 第三方插件按需引入，可借用`babel-plugin-component`插件
+8. 服务端渲染SSR，直接在服务端完成渲染，所以可以被搜索引擎爬取工具抓取（和异步获取的SPA页面相比有更好的SEO，搜索引擎爬取工具抓取不到异步返回的内容），且无需等待所有js加载完再去渲染，能加快首屏加载速度。缺点：需要Node.js环境、只支持`beforCreate`和`created`两个钩子函数、服务器负载
+
 
 ## Vuex 
 Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式，它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化，并没有任何永久存储的功能。每一个 Vuex 应用的核心就是 store（仓库）。“store”基本上就是一个容器，它包含着你的应用中大部分的状态 (state)。
-### 1  如何在 Vue 组件中展示状态？
+### 如何在 Vue 组件中展示状态？
 一个store实例：
 ```javascript
 import Vue from "vue"
@@ -144,7 +165,7 @@ const app = new Vue({
 })
 ```
 
-### 2  Vuex的几种属性介绍
+### Vuex的几种属性介绍
 vuex一共有5种属性，分别是State、 Getter、Mutation 、Action、 Module
 #### State
 1. Vuex就是一个仓库，仓库里面放了很多对象，state是唯一的数据源，**相当于VUE中的data**

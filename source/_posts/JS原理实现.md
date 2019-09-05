@@ -24,9 +24,9 @@ People.prototype.sayName = function() {
 // step3：执行构造函数，传递参数，改变this指向 People.call(obj, ...args)
 // step4：结果是 null 和 undefined 时不处理
 function _new(fn, ...arg) {
-    let obj = Object.create(fn.prototype)
-    let result = fn.call(obj, ...arg)
-    return result instanceof Object ? result : obj
+  let obj = Object.create(fn.prototype)
+  let result = fn.call(obj, ...arg)
+  return result instanceof Object ? result : obj
 }
 
 let my = _new(People, 'Nola')
@@ -73,7 +73,6 @@ var obj = new Proxy({}, {
 Function.prototype.call = function(context, ...args) {
   context || (context = window)
   context.fn = this
-  let args = []
   let result = eval(`context.fn(${args})`)
   delete context.fn
   return result
@@ -82,7 +81,7 @@ Function.prototype.call = function(context, ...args) {
 
 ### apply
 ```JS
-Funtion.prototype.apply = function(context, args) {
+Function.prototype.apply = function(context, args) {
   context || (context = window)
   context.fn = this
   let result = eval(`context.fn(${args})`)
@@ -93,12 +92,12 @@ Funtion.prototype.apply = function(context, args) {
 
 ### bind
 ```JS
-Funtion.prototype.bind = function(context) {
-  if(type of this !== 'function') return
-  var _self = this
-  var args = [].slice.call(arguments, 1)
+Function.prototype.bind = function(context) {
+  if(typeof this !== 'function') return
+  let _this = this
+  let args = [].slice.call(arguments, 1)
   return function() {
-    return _self.apply(context, args.concat([].slice.call(arguments)))
+    return _this.apply(context, args.concat([].slice.call(arguments)))
   }
 }
 ```
