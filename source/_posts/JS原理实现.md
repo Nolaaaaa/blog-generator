@@ -92,13 +92,11 @@ Function.prototype.apply = function(context, args) {
 
 ### bind
 ```JS
-Function.prototype.bind = function(context) {
+Function.prototype.bind = function(context, args) {
   if(typeof this !== 'function') return
-  let _this = this
-  let args = [].slice.call(arguments, 1)
-  return function() {
-    return _this.apply(context, args.concat([].slice.call(arguments)))
-  }
+  context || (context = window)
+  let result = arg => this.apply(context, args.concat(arg))
+  return result
 }
 ```
 

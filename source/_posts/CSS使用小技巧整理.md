@@ -146,3 +146,12 @@ div::after {
 }
 ```
 
+### 禁用鼠标事件
+```css
+.disabled {
+  pointer-events: none;
+  cursor: default;
+  opacity: 0.6;
+}
+```
+

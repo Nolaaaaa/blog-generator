@@ -34,6 +34,8 @@ categories: 前端
 5. **流优先级：**数据传输优先级可控，使网站可以实现更灵活和强大的页面控制
 6. **可重置：**能在不中断 TCP 连接的情况下停止数据的发送
 
+缺点：`HTTP 2`中，多个请求在一个TCP管道中的，出现了丢包时，`HTTP 2`的表现反倒不如`HTTP 1.1`了。因为 TCP 为了保证可靠传输，有个特别的“丢包重传”机制，丢失的包必须要等待重新传输确认，`HTTP 2`出现丢包时，整个 TCP 都要开始等待重传，那么就会阻塞该TCP连接中的所有请求。而对于 `HTTP 1.1` 来说，可以开启多个 TCP 连接，出现这种情况反到只会影响其中一个连接，剩余的 TCP 连接还可以正常传输数据
+
 ### HTTP3
 HTTP 是建立在 TCP 协议之上，所有 HTTP 协议的瓶颈及其优化技巧都是基于 TCP 协议本身的特性，HTTP2 虽然实现了多路复用，底层 TCP 协议层面上的问题并没有解决（HTTP 2.0 同一域名下只需要使用一个 TCP 连接。但是如果这个连接出现了丢包，会导致整个 TCP 都要开始等待重传，后面的所有数据都被阻塞了），而 HTTP3 的 QUIC 就是为解决 HTTP2 的 TCP 问题而生。
 
@@ -83,3 +85,5 @@ HTTP 是建立在 TCP 协议之上，所有 HTTP 协议的瓶颈及其优化技�
 [HTTP/3 都来了，你却还在用 HTTP/1.1？](https://mp.weixin.qq.com/s?__biz=MzI4NzEyMjUxMA==&mid=2649068604&idx=1&sn=9d34b782a5d7c147e108f1af1c0fbc23&chksm=f3c3411dc4b4c80b7e8a72013a7b884e21814f6bcbc6f0ea8752ff6c434b93005efc854520ef&xtrack=1&scene=0&subscene=131&clicktime=1552095539&ascene=7&devic)
 [TCP和UDP比较](https://github.com/ljianshu/Blog/issues/61)
 [一文读懂 HTTP/2 及 HTTP/3 特性](https://blog.fundebug.com/2019/03/07/understand-http2-and-http3/)
+[为什么 HTTP1.1 不能实现多路复用](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/290)
+[解读HTTP/2与HTTP/3 的新特性](https://mp.weixin.qq.com/s/sakIv-NidqkO1tviBHxtWQ)

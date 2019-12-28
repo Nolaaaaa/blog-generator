@@ -135,6 +135,57 @@ for(let i = 1; i < 4; i++) {
 ```
 
 ### this和对象原型
+#### 关于this
+1. `this`是在运行中被调用时绑定的，它不指向函数本身，也不指向函数的词法作用域
+2. 函数如何引用自身？第一种：具名函数可在函数内部通过函数名引用自身，第二种：匿名函数可通过`arguments.callee`引用自身（被弃用了），第三种：可通过call将this绑定在自身上
+
+#### this的绑定规则
+1. **默认绑定：**非严格模式下绑定到全局对象，严格模式下绑定大到`undefined`（函数体是否严格，而非调用位置）
+2. **隐式绑定：**如果调用位置有上下文对象，会绑定到这个上下文对象上。注意⚠️：隐式绑定后不能再赋值给另一个变量进行调用，否则会造成**隐式丢失**，如：`a.b`中b的this指向a，`c = a.b`中b的this就会指向全局而不是a，解决办法：使用硬绑定`c = b.bind(a)`可使b中的this指向a
+3. **显式绑定：**使用`bind`、`call`、`apply`硬绑定指定this，但是如果传入`null``undefined`会被忽略，会进行默认绑定，所以如果显式绑定一个空对象，可以使用`Object.create(null)`创建一个没有原型的空对象传进去
+4. **new绑定：**构造函数（使用new时被调用的函数）中的this指向它的实例对象
+5. 如何确定this应用于哪条绑定规则？先通过调用位置判断，如果一个位置可以应用多条规则，则通过优先级确定
+6. 优先级：默认绑定 < 隐式绑定 < 显式绑定 < new绑定
+7. 注意⚠️：调用间接引用的函数会应用默认绑定的规则
+8. 固定this：回调函数造成的this丢失可以通过固定this来解决，第一种：词法作用域风格--箭头函数，第二种：词法作用域风格--将this赋值给一个变量，第三种：this风格的绑定bind(this)，存在词法作用域风格的代码和this风格，在代码最好只保持一种风格
+
+**使用new时会发生什么？**
+1. 创建一个新对象（空对象）
+2. 新对象的原型指向构造函数的原型
+3. 新对象绑定到构造函数中的this
+4. 返回新对象
+
+#### 关于对象
+1. 定义方式：声明形式、构造形式
+3. 属性名：永远是字符串，且可通过`[变量 + 变量]`形式计算出来
+4. 复制：浅拷贝（`Object.assign({}, obj)`） + 深拷贝
+
+**对象属性：**
+1. 属性描述符：设置属性的特性，`writable: false`使属性**不可修改**，`configurable: false`使属性**不可重定义、不可删除**，`enumerable: false`使属性**不可枚举**。相关博客：[Object.defineProperty和Proxy](https://nolaaaaa.github.io/2019/03/14/%E7%90%86%E8%A7%A3-Object-defineProperty-%E5%92%8C-Proxy/)
+2. 查看属性描述符：`Object.getOwnPropertyDescriptor(obj, 'key')`
+7. 禁止对象扩展：`Object.preventExtensions(obj)`使对象**不可添加新属性**，但是现有属性可修改、可删除。判断是否可扩展：`Object.isExtensible(obj)`
+8. 密封对象：`Object.seal(obj)`使对象不可添加新属性，现有属性**不可重定义、不可删除**，但是可修改（相当于`Object.preventExtensions(obj)` + `configurable: false`）。判断是否密封：`Object.isSealed(obj)`
+9. 冻结对象：`Object.freeze(obj)`使对象不可添加新属性，现有属性不可重定义、不可删除、**不可修改**（相当于`Object.seal(obj)` + `writable: false`）。判断是否冻结：`Object.isFrozen(obj)`
+10. 获取对象的属性：`Object.keys()`返回对象**自身**的**可枚举**的属性
+
+**遍历对象：**
+1. `for in`：遍历的key，检查**自身 + 原型链**中的属性，遍历**可枚举**的属性
+2. `for of`：遍历的是value，向对象请求一个迭代器，使用迭代器的`next()`方法进行遍历，对象没有内置迭代器，所以需要自定义对象迭代器`@@iterater`（原型中存在`Symbol.iterator`属性），相关博客：[JS使用小技巧整理--创建一个可迭代对象](https://nolaaaaa.github.io/2019/07/15/JS%E4%BD%BF%E7%94%A8%E5%B0%8F%E6%8A%80%E5%B7%A7%E6%95%B4%E7%90%86/#more)
+
+**对象存取值：**
+11. 取值：触发[Get]。查找属性步骤：存在存取操作符`getter`？获取`getter`的返回值 => 在对象中找 => 在原型中找 => 返回`undefined`
+12. 赋值：触发[Put]。检查操作属性：存在存取操作符`setter`？调用`setter`进行赋值 => `writable`为`false`？赋值无效 => 都不是？赋值成功
+
+**检查属性是否存在：**
+1. `hasOwnProperty()`：只会检查**自身**，不会检查原型，所以不能判断没有原型的对象如`Object.create(null)`用法：`Object.prototype.hasOwnProperty.call(obj,'属性名')`  [示例](https://jsbin.com/gevudomilu/1/edit?js,console)
+2. 使用`in`操作符：检查**自身 + 原型链**中的属性，**包括不可枚举**的（如果是数组：只会检查下标）
+
+#### 关于类
+1. 类是一种设计模式，使用new可以将类实例化
+2. 面向类的设计模式：实例化、继承、多态
+
+#### 原型
+
 
 
 ### 类型和语法

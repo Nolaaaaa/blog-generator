@@ -22,14 +22,14 @@ categories: 前端
 
 ### 父子通信
 组件关系可分为父子组件通信、兄弟组件通信（new Vue() 作为 eventBus）、跨级组件通信。
-父子组件通信的方法为：子组件通过props方法接受父组件的data数据，子组件通过 $emit 触发父组件的自定义事件，举例如
+父子组件通信的方法为：子组件通过`props方法`接受父组件的data数据，子组件通过`$emit`触发父组件的自定义事件，如：
 ```java
-//父组件将数据（currentUser）和方法（logout）传递出去
+// 父组件将数据（currentUser）和方法（logout）传递出去
 <template>
-        <Todo v-else @logout="logout" :currentUser="currentUser"/>
+  <Todo v-else @logout="logout" :currentUser="currentUser"/>
 </template>
 
-//子组件接收数据和方法
+// 子组件接收数据和方法
 props : ['currentUser'],
 methods: {
   logout() {   //注册 _user
@@ -38,8 +38,8 @@ methods: {
 }
 ```
 on和emit的事件必须是在一个公共的实例上，才能触发
-子组件用$emit ()触发事件`this.$emit(‘logout’)`
-父组件用$on()监昕子组件的事件`@logout =“logout”`
+子组件用`$emit()`触发事件`this.$emit(‘logout’)`
+父组件用`$on()`监昕子组件的事件`@logout =“logout”`
 [父子通信](https://images2018.cnblogs.com/blog/1047894/201804/1047894-20180408144143328-388340893.png)
 
 ### v-show和v-if指令的共同点和不同点
@@ -144,6 +144,7 @@ Vue.use(VueLazyload)
 
 ## Vuex 
 Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式，它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化，并没有任何永久存储的功能。每一个 Vuex 应用的核心就是 store（仓库）。“store”基本上就是一个容器，它包含着你的应用中大部分的状态 (state)。
+[十分钟入门Vuex](https://www.jianshu.com/p/a804606ad8e9)
 ### 如何在 Vue 组件中展示状态？
 一个store实例：
 ```javascript

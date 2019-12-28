@@ -262,6 +262,45 @@ Object.defineProperty(window, 'a', {
 console.log(a === 1 && a === 2 && a === 3)  // true
 ```
 
+
+### 使 a == b && a == c && c != b 为 true
+[代码实现](https://jsbin.com/qabiwadeli/1/edit?js,console)
+```JS
+let a,b,c
+// 方法一：利用复杂类型指向引用的特性，将 b,c 设置为复杂类型
+// "[]" != []
+a = false, b = [], c = []
+console.log( '结果--array', a == b && a == c && c != b )   // true
+
+// "{}" != {}
+a = "[object Object]", b = {}, c = {}
+console.log( '结果--object', a == b && a == c && c != b )   // true
+
+// "[object Function]" != function(){}
+a = "function(){}", b = function(){}, c = function(){}
+console.log( '结果--function', a == b && a == c && c != b )   // true
+
+// 方法二：利用proxy劫持
+b = 1, c = 2
+a = new Proxy({ i: 1 }, { 
+  get(obj) { return () => obj.i++ } 
+})
+console.log( '结果--proxy', a == b && a == c && c != b )   // true
+```
+
+
+### 为什么["1", "2", "3"].map(parseInt) 返回值是[1, NaN, NaN]
+[map()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/map)调用callback函数时，会给它传递三个参数：当前**正在遍历的元素**、**元素索引**、**原数组本身**
+[parseInt](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/parseInt)接受两个参数：**元素**、**进制数**
+遍历时parseInt的第二个参数被传进来的是元素的索引值，所以...
+```JS
+["1", "2", "3"].map(parseInt) 
+// [1, NaN, NaN]
+
+["1", "2", "3"].map(item => parseInt(item))
+// [1, 2, 3]
+```
+
 ### 利用 a 标签解析 URL
 ```JS
 function parseURL(url) {
@@ -286,4 +325,142 @@ parseURL('https://www.google.com:8008?a=1&b=2')
 
 // 其他快速url参数的方法
 new URLSearchParams(location.search).get("a")  // 1
+```
+
+
+### 删除链接中某个参数
+[URLSearchParams MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/URLSearchParams)
+```JS
+// 利用URLSearchParams
+function delSearchParam(name, search = location.search) {
+  let _params = new URLSearchParams(search.substr(1))
+  _params.delete(name)
+  return `?${_params.toString()} `
+}
+
+// 普通的
+function delSearchParam(name, search = location.search) {
+	let _arr = search.split("?")[1].split("&")
+	// 	参数变成数组
+	let _map = {}
+	for(let i = 0; i < _arr.length; i++) {
+		let _t = _arr[i].split("=")
+		_map[_t[0]] = _t[1]
+  }
+	// 	删除这个参数
+	if(_map[name]) {
+		delete _map[name]
+  }
+	// 	把删除后的数组变成字符串
+	let _result = '?'
+	for(let i in _map) {
+		_result += `${i}=${_map[i]}&`
+  }
+	// 	删除字符串最后一个元素
+	return _result.substr(0, _result.length-1)
+}
+
+delSearchParam('a', '?a=1&b=2&c=3')
+```
+
+
+### 实现吸顶
+[参考文章--交叉观察者](https://juejin.im/post/5d665133e51d4561c83e7c83)
+[MDN--IntersectionObserver](https://developer.mozilla.org/zh-CN/docs/Web/API/IntersectionObserver)
+**方法一**
+[效果](https://jsbin.com/qojufiputu/edit?html,css,output)
+```CSS
+.target {
+  position: sticky;
+  top: 0;
+}
+```
+使用条件：
+1. 父元素不能`overflow:hidden`或者`overflow:auto`属性
+2. 必须指定`top、bottom、left、right`4 个值之一，否则只会处于相对定位
+3. 父元素的高度不能低于`sticky`元素的高度
+4. `sticky`元素仅在其父元素内生效
+
+**方法二**
+[效果](https://jsbin.com/hekoketolu/1/edit?html,css,js,output)
+```CSS
+var a = document.querySelector('.a')
+var b = document.querySelector('.b')
+new IntersectionObserver(function(e) {
+  let offsetTop = a.getBoundingClientRect().top
+  if(offsetTop < 0) {
+    a.style.position = 'fixed'
+    a.style.top = 0
+    a.style.left = '50%'
+    a.style.transform = 'translateX(-50%)'
+  } else {
+    a.style.position = 'relative'
+  }
+}, {
+  threshold: [1]
+}).observe(a)
+```
+
+### 时间相关的计算
+```JS
+// 计算当前日期天数
+let dayOfYear = date => 
+  Math.floor((date - new Date(date.getFullYear(), 0, 0)) / (1000 * 3600 * 24))
+
+dayOfYear(new Date()) // 301
+
+// 时间戳转日期时间
+let getDate = time => 
+  new Date(time).toLocaleDateString().replace(/\//g, "-") + " " + new Date(time).toTimeString().substr(0, 8)
+
+getDate(Date.now())  // "2019-10-28 17:36:47"
+```
+
+### 实现深拷贝
+[代码实现](https://jsbin.com/gogopeyana/1/edit?js,console) [参考文章](https://juejin.im/post/5d6aa4f96fb9a06b112ad5b1) [Map MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Map)
+PS：扩展符`...`可实现数组的深拷贝
+
+
+### 防抖
+防抖查看效果：[地址](https://jsbin.com/religexeka/61/edit?html,js,output)
+```JS
+// 触发间隔超过指定间隔的任务才会执行，连续发生动作会刷新时间
+function debounce(fn, delay, ...args) {
+  let timer = null
+  return function () {
+    clearTimeout(timer)
+    timer = setTimeout(() => {
+      fn.apply(this, args)
+    }, delay)
+  }
+}
+```
+
+### 节流
+节流查看效果：[地址](https://jsbin.com/religexeka/61/edit?html,js,output)
+```JS
+// 在指定间隔内任务只执行一次，连续发生的动作会被忽略
+function throttle(fn, delay, ...args) {
+  let prev = Date.now()
+  return function () {
+    let now = Date.now()
+    if (now - prev >= delay) {
+      fn.apply(this, args)
+      prev = Date.now()
+    }
+  }
+}
+
+function throttle(fn, delay, ...args) {
+  let timer
+  return function () {
+    if (!timer) {
+      timer = null
+      timer = setTimeout(() => {
+        timer = null
+        fn.apply(this, args)
+      }, delay)
+    }
+  }
+}
 ```

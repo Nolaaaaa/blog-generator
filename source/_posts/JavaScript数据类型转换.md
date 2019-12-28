@@ -40,7 +40,7 @@ true + ""  //"true"
 null + ""  //"null"
 undefined + ""  //"undefined"
 {} + ""  //0
-var o={}  //undefined
+var o = {}  
 o + ""  //"[object Object]"
 ```
 
