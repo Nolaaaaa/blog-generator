@@ -138,6 +138,7 @@ for(let i = 1; i < 4; i++) {
 #### 关于this
 1. `this`是在运行中被调用时绑定的，它不指向函数本身，也不指向函数的词法作用域
 2. 函数如何引用自身？第一种：具名函数可在函数内部通过函数名引用自身，第二种：匿名函数可通过`arguments.callee`引用自身（被弃用了），第三种：可通过call将this绑定在自身上
+3. 匿名函数的缺点？第一：调试栈更难追踪，第二：自我引用（递归、事件绑定解除等）更难，第三：代码（稍微）更难理解
 
 #### this的绑定规则
 1. **默认绑定：**非严格模式下绑定到全局对象，严格模式下绑定大到`undefined`（函数体是否严格，而非调用位置）
@@ -183,10 +184,48 @@ for(let i = 1; i < 4; i++) {
 #### 关于类
 1. 类是一种设计模式，使用new可以将类实例化
 2. 面向类的设计模式：实例化、继承、多态
+3. 混入模式（mixin）：可以用来模拟类的复制行为，但是有很多隐患
 
 #### 原型
+**[[prototype]]**
+1. 对象之间通过内部的`[[prototype]]`关联
+2. 所有`[[prototype]]`的终点都是`Object.prototype`
+3. 修改`prototype`后，新`prototype`的`constructor`属性（不可枚举、可修改）不会自动获得，需要手动赋值
 
+**Object.create()**
+1. 创建一个对象，并把这个对象的`[[prototype]]`关联到指定的对象
+2. `Object.create(null)`会创建一个没有原型链的对象，不会受原型链干扰，适合存储数据
+3. `Object.create()`的`polyfill`
+```js
+Object.create = function(obj) {
+	function F() {}
+	F.protoptype = 0
+	return new F()
+}
+```
 
+**Object.getPrototypeOf()、Object.setPrototypeOf()、isPrototypeOf()**
+```js
+// Object.getPrototypeOf() 查看某个对象的原型
+function A() {}
+let a = new A()
+Object.getPrototypeOf(a) === A.prototype 
+a.__proto__ === A.prototype  // __proto__ 非标准
+
+// isPrototypeOf() 测试一个对象是否存在于另一个对象的原型链上
+A.prototype.isPrototypeOf(a)
+
+// Object.setPrototypeOf() 关联两个对象的原型
+a.prototype = Object.create(b.prototype) // ES5 抛弃默认的a.prototype（需要进行垃圾回收）
+Object.setPrototypeOf(a.prototype, b.prototype) // ES6 直接修改现有的a.prototype
+
+```
+
+#### 行为委托
+1. 内部委托比起直接委托可以让API接口设计更加清晰
+2. 行为委托认为对象之间的兄弟关系，相互委托，而非父子关系，[[prototype]]机制本质上就是行为委托
+3. 两种设计模式：**面向对象风格**（类风格，构造函数、原型、new）、**对象关联风格**（委托风格，直接穿件和关联对象，使用基于[[prototype]]的行为委托，干净简洁）
+4. ES6的Class是类风格的语法糖
 
 ### 类型和语法
 我的另外几篇关于数据类型的博客：[数据类型介绍](https://nolaaaaa.github.io/2018/04/26/JavaScript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%BB%8B%E7%BB%8D/) [数据类型判断](https://nolaaaaa.github.io/2018/04/28/JavaScript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%88%A4%E6%96%AD/) [数据类型转换](https://nolaaaaa.github.io/2018/04/27/JavaScript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/)
