@@ -1,7 +1,7 @@
 ---
 title: 理解 Object.defineProperty 和 Proxy
 date: 2019-03-14 23:13:36
-tags: JavaScript
+tags: [JavaScript]
 categories: 前端
 ---
 

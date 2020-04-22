@@ -2,7 +2,7 @@
 title: Hexo--Blog Beautify
 date: 2018-04-03 22:19:17
 tags: Hexo
-categories: Hexo
+categories: 备忘
 ---
 
 这篇的目的是记录美化博客的过程

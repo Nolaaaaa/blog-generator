@@ -1,7 +1,7 @@
 ---
 title: RAP + Mock.js动态生成模拟数据
 date: 2018-06-25 20:12:45
-tags: [Mock.js,RAP]
+tags: [Other]
 categories: 前端
 ---
 

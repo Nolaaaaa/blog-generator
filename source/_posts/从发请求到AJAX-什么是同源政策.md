@@ -1,7 +1,7 @@
 ---
 title: 从发请求到AJAX + 什么是同源政策
 date: 2018-06-2 14:33:48
-tags: [AJAX,同源政策]
+tags: [AJAX]
 categories: 前端
 ---
 

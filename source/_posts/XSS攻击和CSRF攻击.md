@@ -1,7 +1,7 @@
 ---
 title: XSS攻击和CSRF攻击
 date: 2018-07-20 14:36:42
-tags: [XSS,CSRF,前端安全]
+tags: [Security]
 categories: 前端
 ---
 

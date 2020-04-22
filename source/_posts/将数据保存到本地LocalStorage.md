@@ -1,7 +1,7 @@
 ---
 title: 将数据保存到本地localStorage
 date: 2018-08-05 17:14:22
-tags: LocalStorage
+tags: Browser
 categories: 前端
 ---
 

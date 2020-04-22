@@ -417,8 +417,124 @@ getDate(Date.now())  // "2019-10-28 17:36:47"
 ```
 
 ### 实现深拷贝
-[代码实现](https://jsbin.com/gogopeyana/1/edit?js,console) [参考文章](https://juejin.im/post/5d6aa4f96fb9a06b112ad5b1) [Map MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Map)
+[代码实现](https://jsbin.com/sajimaqiko/edit?js) [参考文章](https://juejin.im/post/5d6aa4f96fb9a06b112ad5b1) [Map MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Map)
 PS：扩展符`...`可实现数组的深拷贝
+```js
+// Step 1：深拷贝数组和对象
+function clone(target) {
+  if(typeof target == 'object') {
+    let _target = Array.isArray(target) ? [] : {}
+    for(let i in target) {
+      _target[i] = clone(target[i])
+    }
+    return _target
+  } else {
+    return target
+  }
+}
+
+// Step 2：但是如果循环引用，上面的代码就很会导致栈内存溢出
+// 【解决】利用Map，拷贝前检查有无拷贝过 
+// => Map是强引用类型，内存不会自动释放，会造成非常大的额外消耗(任何值都可以作为一个键或一个值)
+// => 使用WeakMap弱引用类型，内存会自动释放(键必须是对象，而值可以是任意的)
+function clone(target, map = new WeakMap()) {
+  if (typeof target === 'object') {
+    let _target = Array.isArray(target) ? [] : {}
+
+    if(map.get(target)) {               
+      return map.get(target)      
+    }
+    map.set(target, _target) 
+
+    for(let i in target) {
+      _target[i] = clone(target[i], map)
+    }
+    return _target
+  } else {
+    return target
+  }
+}
+
+// Step 3：做一下性能优化
+// 【优化点】执行效率：while、for > for in
+// 其中for in执行效率是三者中最差的，所以不能用for in
+if(false) { 
+  let arr = [...new Array(1000000).keys()]
+  console.time()
+  
+  // 第 1 种：while     用时：8.023193359375ms
+  let i = 0
+  while(i < arr.length) { i++ }
+  
+  // 第 2 种：for       用时：7.807861328125ms
+  for(let i = 0; i < arr.length; i++) { }
+  
+  // 第 3 种：for in    用时：190.059814453125ms
+  for(let i in arr) { }
+  
+  // 第 4 种：for in    用时：10.40576171875ms
+  arr.forEach(() => {})
+  
+  console.timeEnd()
+}
+
+function clone(target, map = new WeakMap()) {
+  if (typeof target === 'object') {
+    let isArray = Array.isArray(target);
+    let _target = isArray ? [] : {}
+
+    if(map.get(target)) {               
+      return map.get(target)      
+    }
+    map.set(target, _target) 
+
+    let keys = isArray ? undefined : Object.keys(target)
+    forEach(keys || target, (value, i) => {
+      if (keys) {
+        i = value
+      }
+      _target[i] = clone(target[i], map)
+    })
+
+    return _target
+  } else {
+    return target
+  }
+}
+
+function forEach(array, iteratee) {
+  let index = -1;
+  const length = array.length;
+  while (++index < length) {
+    iteratee(array[index], index);
+  }
+  return array;
+}
+
+
+// Step 4：兼容其他数据类型
+// 以上代码只兼容object和array两种数据类型，值如果存在null、function则会报错
+
+
+
+// 一个简单的测试
+let target = {
+    a: undefined,
+    b: 'hello',
+    c: {
+       child: 'child'
+    },
+    d: [1, 2, 3],
+    f: { f: { f: { f: { f: { f: { f: { f: { f: { f: { f: { f: {} } } } } } } } } } } },
+}
+
+
+let result = clone(target)
+
+target.target = target          // 循环引用
+target.c.child = 'new child'    // 修改原对象
+console.log(result)             // 打印拷贝值
+```
 
 
 ### 防抖

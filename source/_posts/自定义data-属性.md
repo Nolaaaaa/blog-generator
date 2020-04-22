@@ -1,7 +1,7 @@
 ---
 title: 自定义data-*属性
 date: 2018-08-09 17:19:26
-tags: HTML
+tags: [HTML/DOM]
 categories: 前端
 ---
 

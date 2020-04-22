@@ -1,7 +1,7 @@
 ---
 title: onclick与addEventListener的区别
 date: 2018-06-01 15:25:35
-tags: DOM事件
+tags: [HTML/DOM]
 categories: 前端
 ---
 

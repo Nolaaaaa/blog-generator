@@ -1,7 +1,7 @@
 ---
 title: JavaScript数据类型判断
 date: 2018-04-28 16:22:07
-tags: [数据类型,JavaScript]
+tags: [JavaScript]
 categories: 前端
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: 全局变量变局部变量和MVC思想
 date: 2018-06-15 20:18:36
-tags: MVC
+tags: DesignModel
 categories: 前端
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Easy LESS插件+Less将less文件转为wxss或acss文件
 date: 2018-09-03 21:21:54
-tags: less
+tags: CSS
 categories: 前端
 ---
 

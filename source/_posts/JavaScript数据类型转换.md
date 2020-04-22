@@ -1,7 +1,7 @@
 ---
 title: JavaScript数据类型转换
 date: 2018-04-27 16:14:59
-tags: [数据类型,JavaScript]
+tags: [JavaScript]
 categories: 前端
 ---
 

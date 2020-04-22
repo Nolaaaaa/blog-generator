@@ -1,7 +1,7 @@
 ---
 title: QUIC协议 和 TCP/UDP 协议
 date: 2019-04-11 21:32:16
-tags: [Http,QUIC,TCP,UDP]
+tags: [HTTP]
 categories: 前端
 ---
 

@@ -1,7 +1,7 @@
 ---
 title:  利用本地项目构建Chrome插件
 date: 2019-03-28 20:52:57
-tags: JavaScript
+tags: [JavaScript,Browser]
 categories: 前端
 ---
 

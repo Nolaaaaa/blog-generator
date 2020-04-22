@@ -1,7 +1,7 @@
 ---
 title: 让.bashrc文件在终端自动生效
 date: 2018-04-19 18:09:14
-tags: 
+tags: Bash
 categories: 备忘
 ---
 

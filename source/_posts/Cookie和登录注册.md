@@ -1,7 +1,7 @@
 ---
 title: Cookie和登录注册
 date: 2018-08-19 20:34:10
-tags: Cookie
+tags: Browser
 categories: 前端
 ---
 

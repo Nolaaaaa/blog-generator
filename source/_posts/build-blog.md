@@ -2,7 +2,7 @@
 title: Hexo--Build Blog
 date: 2018-04-02 22:35:58
 tags: Hexo
-categories: Hexo
+categories: 备忘
 ---
 
 因为想拥有一个独属于自己的个人博客啊

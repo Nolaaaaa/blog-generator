@@ -1,7 +1,7 @@
 ---
 title: 用命令行Git在本地创建一个库并上传到Github
 date: 2018-04-4 19:08:02
-tags: [SSH,Git]
+tags: [Git]
 categories: 前端
 ---
 

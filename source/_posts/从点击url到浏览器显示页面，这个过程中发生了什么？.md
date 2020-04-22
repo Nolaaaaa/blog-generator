@@ -1,7 +1,7 @@
 ---
 title: 从点击url到浏览器显示页面，这个过程中发生了什么？
 date: 2018-04-13 19:30:22
-tags: 
+tags: HTTP
 categories: 前端
 ---
 

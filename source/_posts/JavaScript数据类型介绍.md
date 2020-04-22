@@ -1,7 +1,7 @@
 ---
 title: JavaScript数据类型介绍
 date: 2018-04-26 16:06:37
-tags: [数据类型,JavaScript]
+tags: [JavaScript]
 categories: 前端
 ---
 
